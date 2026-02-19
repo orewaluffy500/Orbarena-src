@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://wrhlv5erldfu"]
+
+[ext_resource type="Script" uid="uid://dh6i50j3xywfo" path="res://templates/skill_shop_item.gd" id="1_kklga"]
+[ext_resource type="Texture2D" uid="uid://ceadq67gahv7g" path="res://assets/balls/viking.png" id="2_6a3ix"]
+[ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="3_ajhyj"]
+[ext_resource type="StyleBox" uid="uid://cj5mkruerex17" path="res://BackgroundDarkRounded.tres" id="4_3gbw1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg5kv"]
+bg_color = Color(0.62862104, 0.11819477, 0.99999994, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="SkillShopItem" type="Panel" unique_id=1265369335 node_paths=PackedStringArray("learnButton", "heading", "desc", "imageBox")]
+offset_right = 1024.0
+offset_bottom = 200.0
+script = ExtResource("1_kklga")
+learnButton = NodePath("LearnButton")
+heading = NodePath("Heading")
+desc = NodePath("Desc")
+imageBox = NodePath("Image")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1901097591]
+position = Vector2(29, 25)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_6a3ix")
+centered = false
+
+[node name="Heading" type="Label" parent="." unique_id=397933067]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 1.0
+offset_right = 1020.0
+offset_bottom = 97.0
+theme = ExtResource("3_ajhyj")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_3gbw1")
+text = "POKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="." unique_id=678830007]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 91.0
+offset_right = 732.0
+offset_bottom = 187.0
+theme = ExtResource("3_ajhyj")
+theme_override_font_sizes/font_size = 22
+text = "Unusable on Club"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LearnButton" type="Button" parent="." unique_id=637315852]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 100.0
+offset_right = 1011.0
+offset_bottom = 182.0
+theme = ExtResource("3_ajhyj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tg5kv")
+text = "1000 Elixir"

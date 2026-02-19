@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bblc7nfilryrw"]
+
+[ext_resource type="Script" uid="uid://isitxby810u3" path="res://scripts/upgrade_menu_item.gd" id="1_w3yvo"]
+[ext_resource type="Texture2D" uid="uid://ceadq67gahv7g" path="res://assets/balls/viking.png" id="2_akkhn"]
+[ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="3_6ju4a"]
+[ext_resource type="StyleBox" uid="uid://cj5mkruerex17" path="res://BackgroundDarkRounded.tres" id="4_gel16"]
+[ext_resource type="StyleBox" uid="uid://oy2lodxc8760" path="res://ButtonGreen.tres" id="5_xxk8v"]
+
+[node name="UpgradeMenuItem" type="Panel" unique_id=1041479272 node_paths=PackedStringArray("seeButton", "heading", "desc", "imageBox")]
+offset_right = 597.0
+offset_bottom = 192.0
+size_flags_horizontal = 3
+script = ExtResource("1_w3yvo")
+seeButton = NodePath("UpgradeButton")
+heading = NodePath("Heading")
+desc = NodePath("Desc")
+imageBox = NodePath("Image")
+
+[node name="UpgradeButton" type="Button" parent="." unique_id=637315852]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 102.0
+offset_right = 583.0
+offset_bottom = 177.0
+theme = ExtResource("3_6ju4a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_xxk8v")
+text = "See"
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1901097591]
+position = Vector2(29, 25)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_akkhn")
+centered = false
+
+[node name="Heading" type="Label" parent="." unique_id=397933067]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 1.0
+offset_right = 597.0
+offset_bottom = 97.0
+theme = ExtResource("3_6ju4a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_gel16")
+text = "VIKING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="." unique_id=678830007]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 93.0
+offset_right = 201.0
+offset_bottom = 189.0
+theme = ExtResource("3_6ju4a")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1

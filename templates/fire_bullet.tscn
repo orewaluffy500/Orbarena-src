@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c6rcvpvy6uxwg"]
+
+[ext_resource type="Texture2D" uid="uid://ba5pm2cufoild" path="res://assets/misc/lava.png" id="1_s8m4s"]
+[ext_resource type="Script" uid="uid://b8e0tlh6cd555" path="res://scripts/fire_bullet.gd" id="1_v80su"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v80su"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t1ex"]
+size = Vector2(12, 24)
+
+[node name="FireBullet" type="RigidBody2D" unique_id=388680592]
+script = ExtResource("1_v80su")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=235719143]
+z_index = 10
+scale = Vector2(10.940006, 13.253569)
+mesh = SubResource("CapsuleMesh_v80su")
+texture = ExtResource("1_s8m4s")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1849188745]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1346988754]
+shape = SubResource("RectangleShape2D_7t1ex")

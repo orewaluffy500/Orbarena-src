@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d00hd6ve6xbtu"]
+
+[ext_resource type="Script" uid="uid://6wdxxjm17wk8" path="res://scripts/sword_pivot.gd" id="1_auh0o"]
+[ext_resource type="Script" uid="uid://da4u6i0oodl5x" path="res://scripts/sword.gd" id="2_4ahg1"]
+[ext_resource type="Script" uid="uid://bj13bslocxitq" path="res://scripts/sword_sprite.gd" id="3_wvb8b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nmcul"]
+radius = 16.571997
+height = 61.96974
+
+[node name="SwordPivot" type="StaticBody2D" unique_id=154787926]
+script = ExtResource("1_auh0o")
+
+[node name="Sword" type="RigidBody2D" parent="." unique_id=547563138]
+position = Vector2(0, -39)
+can_sleep = false
+freeze = true
+freeze_mode = 1
+script = ExtResource("2_4ahg1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword" unique_id=992447980]
+position = Vector2(0, -96)
+rotation = -0.7853982
+scale = Vector2(4, 4)
+script = ExtResource("3_wvb8b")
+
+[node name="Area" type="Area2D" parent="Sword" unique_id=505522936]
+position = Vector2(-3.5527137e-15, -3.9999995)
+scale = Vector2(1.2799987, 1.2799987)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Area" unique_id=384999585]
+position = Vector2(2.7755607e-15, -81.250084)
+scale = Vector2(1.3199993, 1.3199993)
+shape = SubResource("CapsuleShape2D_nmcul")

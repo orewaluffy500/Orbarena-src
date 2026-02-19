@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqwc8yq2552ie"]
+
+[ext_resource type="Script" uid="uid://c6cmy45rfgqd7" path="res://scripts/collectable.gd" id="1_c15o7"]
+[ext_resource type="Texture2D" uid="uid://v02pw168eeor" path="res://assets/weapons/scythe.png" id="2_58q4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5g6tc"]
+radius = 40.04997
+
+[node name="Collectable" type="Area2D"]
+script = ExtResource("1_c15o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5g6tc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.1875, 2.1875)
+texture = ExtResource("2_58q4b")

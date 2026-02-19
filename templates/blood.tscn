@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcs08db5qasqe"]
+
+[ext_resource type="Texture2D" uid="uid://ngpmmadcj13j" path="res://assets/misc/blood2.png" id="1_gdtwa"]
+[ext_resource type="Script" uid="uid://cjmbnd368wmof" path="res://scripts/blood.gd" id="2_ddpyx"]
+
+[node name="Blood" type="Sprite2D"]
+texture = ExtResource("1_gdtwa")
+script = ExtResource("2_ddpyx")

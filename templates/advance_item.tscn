@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bhwt3etac2ufd"]
+
+[ext_resource type="Script" uid="uid://bc013ht6kqacn" path="res://scripts/advance_item.gd" id="1_hdq2s"]
+[ext_resource type="Texture2D" uid="uid://ceadq67gahv7g" path="res://assets/balls/viking.png" id="2_cnwpd"]
+[ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="3_u6t8i"]
+[ext_resource type="StyleBox" uid="uid://cj5mkruerex17" path="res://BackgroundDarkRounded.tres" id="4_v7j7g"]
+
+[node name="AdvanceItem" type="Panel" unique_id=112724986 node_paths=PackedStringArray("heading", "desc", "imageBox")]
+offset_right = 790.6372
+offset_bottom = 186.89453
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hdq2s")
+heading = NodePath("Heading")
+desc = NodePath("Desc")
+imageBox = NodePath("Image")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1114696853]
+position = Vector2(29, 25)
+scale = Vector2(0.25976563, 0.26367185)
+texture = ExtResource("2_cnwpd")
+centered = false
+
+[node name="Heading" type="Label" parent="." unique_id=201459308]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 1.0
+offset_right = 790.0
+offset_bottom = 97.0
+theme = ExtResource("3_u6t8i")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_v7j7g")
+text = "VIKING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="." unique_id=1781042139]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 91.0
+offset_right = 791.0
+offset_bottom = 187.0
+theme = ExtResource("3_u6t8i")
+theme_override_font_sizes/font_size = 25
+text = "120 HP | 300 SPEED"
+vertical_alignment = 1

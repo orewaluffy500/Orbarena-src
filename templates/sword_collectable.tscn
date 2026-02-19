@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ch7tskv7o16nd"]
+
+[ext_resource type="Script" uid="uid://dsvjk614jw2vp" path="res://scripts/sword_collectable.gd" id="1_ojos0"]
+[ext_resource type="Texture2D" uid="uid://bawd321646mx2" path="res://assets/weapons/Scimitar.png" id="2_ojos0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5g6tc"]
+radius = 40.04997
+
+[node name="SwordCollectable" type="Area2D" unique_id=309646913]
+script = ExtResource("1_ojos0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821762924]
+shape = SubResource("CircleShape2D_5g6tc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=515736488]
+position = Vector2(-0.9999999, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ojos0")

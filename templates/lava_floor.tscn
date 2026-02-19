@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck4isiu61j6to"]
+
+[ext_resource type="Script" uid="uid://btno4a7opxsk" path="res://scripts/fire_floor.gd" id="1_mdgc6"]
+[ext_resource type="Texture2D" uid="uid://ba5pm2cufoild" path="res://assets/misc/lava.png" id="2_pjc0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7ht3"]
+radius = 99.40825
+
+[node name="LavaFloor" type="Area2D"]
+z_index = -2
+script = ExtResource("1_mdgc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.0042744, 1.0042744, 1.0042744, 1)
+z_index = -1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_pjc0e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_w7ht3")

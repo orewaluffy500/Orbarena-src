@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqhx8gi1l4bc2"]
+
+[ext_resource type="Script" uid="uid://bnndlmqt48bmk" path="res://scripts/power_up.gd" id="1_tmab2"]
+[ext_resource type="Texture2D" uid="uid://bsbkjjc45hr1b" path="res://assets/powerups/heal.png" id="2_on8fp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bisgb"]
+radius = 36.0
+
+[node name="PowerUp" type="Area2D" unique_id=1262403481]
+script = ExtResource("1_tmab2")
+form = "clone"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1160862343]
+scale = Vector2(2, 2)
+texture = ExtResource("2_on8fp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=113260116]
+visible = false
+shape = SubResource("CircleShape2D_bisgb")

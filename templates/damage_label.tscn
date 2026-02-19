@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpw1bfge44k3a"]
+
+[ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="1_iilxk"]
+[ext_resource type="FontFile" uid="uid://ofwpri6dk81i" path="res://assets/fonts/TitilliumWeb-Black.ttf" id="2_4vdud"]
+[ext_resource type="Script" uid="uid://b3vchst2sa0fk" path="res://scripts/damage_label.gd" id="3_ruq0j"]
+
+[node name="DamageLabel" type="Label"]
+z_index = 30
+offset_left = 211.0
+offset_top = 419.0
+offset_right = 305.41107
+offset_bottom = 485.0
+theme = ExtResource("1_iilxk")
+theme_override_colors/font_color = Color(0.73718524, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_4vdud")
+theme_override_font_sizes/font_size = 36
+text = "24"
+script = ExtResource("3_ruq0j")

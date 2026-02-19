@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cq2dftexmxtq2"]
+
+[ext_resource type="Script" uid="uid://l1jl3iq8qoek" path="res://scripts/shield_purchase_item.gd" id="1_gmm4r"]
+[ext_resource type="Texture2D" uid="uid://budhrexn53w3e" path="res://assets/shields/Steel.png" id="2_gmm4r"]
+[ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="3_xtxy4"]
+[ext_resource type="StyleBox" uid="uid://cj5mkruerex17" path="res://BackgroundDarkRounded.tres" id="4_fu1j8"]
+[ext_resource type="StyleBox" uid="uid://oy2lodxc8760" path="res://ButtonGreen.tres" id="5_kl22d"]
+[ext_resource type="Script" uid="uid://ci706te05g3gm" path="res://scripts/buy_shield_button.gd" id="6_b86yc"]
+
+[node name="ShieldPurchaseItem" type="Panel" unique_id=1041479272 node_paths=PackedStringArray("heading", "desc", "imageBox")]
+offset_right = 1024.0
+offset_bottom = 192.0
+size_flags_horizontal = 3
+script = ExtResource("1_gmm4r")
+heading = NodePath("Heading")
+desc = NodePath("Desc")
+imageBox = NodePath("Image")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=1901097591]
+position = Vector2(29, 25)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_gmm4r")
+centered = false
+
+[node name="Heading" type="Label" parent="." unique_id=397933067]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 1.0
+offset_right = 1020.0
+offset_bottom = 97.0
+theme = ExtResource("3_xtxy4")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_fu1j8")
+text = "STEEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Desc" type="Label" parent="." unique_id=678830007]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 91.0
+offset_right = 732.0
+offset_bottom = 187.0
+theme = ExtResource("3_xtxy4")
+theme_override_font_sizes/font_size = 25
+text = "Slowness: 2 Defense: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="." unique_id=637315852]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 97.0
+offset_right = 1009.0
+offset_bottom = 179.0
+theme = ExtResource("3_xtxy4")
+theme_override_styles/normal = ExtResource("5_kl22d")
+text = "0$"
+script = ExtResource("6_b86yc")
