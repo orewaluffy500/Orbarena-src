@@ -1,6 +1,0 @@
-[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://y3cki6sgmsf7"]
-
-[ext_resource type="FontFile" uid="uid://dve4vu3rnkwo1" path="res://assets/fonts/Galindo-Regular.ttf" id="1_ge2qs"]
-
-[resource]
-base_font = ExtResource("1_ge2qs")
