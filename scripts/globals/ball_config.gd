@@ -146,7 +146,7 @@ var Config = {
 		"death": Sounds.Pop,
 		"maxHealth": 300,
 		"health": 200,
-		"speed": 150,
+		"speed": 200,
 		"scale": 1.2,
 		"coinOutput": 5000,
 		"damage": 2,

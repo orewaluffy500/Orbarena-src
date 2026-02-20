@@ -190,10 +190,10 @@ func ability_super_knight(ball: Ball, delta: float):
 	if not ball: return
 
 	if not ball.has_meta("explosions"):
-		ball.set_meta("explosions", 0)
+		ball.set_meta("explosions", 2)
 	if ball.get_meta("explosions") <= 0: return
 
-	if ball.player and Input.is_action_just_released("BallAbility1"):
+	if ball.player and Input.is_action_just_pressed("ball_ability_1"):
 		summon_explosion(ball)
 	
 	elif not ball.player and randi_range(1, 200) == 1:
@@ -206,6 +206,13 @@ func ability_super_knight(ball: Ball, delta: float):
 
 
 
+func add_explosion_regen(ball: Ball):
+	get_tree().create_timer(3).timeout.connect(func():
+		if not ball: return
+		ball.set_meta("explosions", ball.get_meta("explosions", 0) + 1)
+		if ball.get_meta("explosions") < 2:
+			add_explosion_regen(ball)
+	)
 
 
 
@@ -214,13 +221,10 @@ func summon_explosion(ball: Ball):
 
 	get_tree().current_scene.add_child(clone)
 	clone.global_position = ball.global_position
-	clone.master = ball.get_instance_id()
+	clone.explosionMaker = ball.get_instance_id()
 
-	ball.set_meta("explosions", ball.get_meta("explosion") - 1)
+	ball.set_meta("explosions", ball.get_meta("explosion", 1) - 1)
 	
-	get_tree().create_timer(3).timeout.connect(func():
-		if not ball: return
-		ball.set_meta("explosions", ball.get_meta("explosion") + 1)
-	)
+	add_explosion_regen(ball)
 
 	Sounds.play_sound(Sounds.GroundSlam)	
