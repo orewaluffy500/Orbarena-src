@@ -223,7 +223,7 @@ func summon_explosion(ball: Ball):
 	clone.global_position = ball.global_position
 	clone.explosionMaker = ball.get_instance_id()
 
-	ball.set_meta("explosions", ball.get_meta("explosion", 1) - 1)
+	ball.set_meta("explosions", ball.get_meta("explosions") - 1)
 	
 	add_explosion_regen(ball)
 
