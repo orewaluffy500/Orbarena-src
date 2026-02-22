@@ -29,3 +29,7 @@ func update():
 	if Player.data.shields.has(shieldName):
 		$BuyButton.disabled = true
 		$BuyButton.text = "Bought"
+
+
+func _process(delta: float) -> void:
+	update()

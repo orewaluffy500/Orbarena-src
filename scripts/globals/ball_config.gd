@@ -16,7 +16,7 @@ var Config = {
 		"coinOutput": 100,
 		"maxHealth": 150,
 		"scale": 1,
-		"damage": 2,
+		"damage": 8,
 		"weaponless": true
 	},
 	"king": {
@@ -194,7 +194,6 @@ func configurate_ball(ball: Ball):
 	ball.health = config["health"]
 	ball.maxHealth = config["maxHealth"]
 	
-
 	if config.has("weapon"):
 		ball.swordName = config["weapon"]
 		ball.canTakeSword = false

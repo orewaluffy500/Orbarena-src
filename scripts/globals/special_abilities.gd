@@ -60,8 +60,10 @@ func ability_king(ball: Ball, delta: float):
 
 
 func ability_slime(ball: Ball, delta: float):
+	if not ball.has_meta("mitosis_count"): ball.set_meta("mitosis_count", 0)
+
 	var count = ball.get_meta("mitosis_count")
-	if ball.tookDamage and ball.get_meta("mitosis_count", 0) < 4:
+	if ball.tookDamage and count < 4:
 		if randi_range(1, 2) == 1:	
 			ball.set_meta("mitosis_count", count + 1)
 			BallConfig.summon_ball("slime_minion", ball)
@@ -169,20 +171,30 @@ func ability_arsonist(ball: Ball, delta: float):
 func ability_ghost(ball: Ball, delta: float):
 	if not ball: return
 	if not ball.has_meta("second_life"): ball.set_meta("second_life", false)
+	if not ball.has_meta("spirits"): ball.set_meta("spirits", 6)
 	
 	if ball.health <= 0 and not ball.get_meta("second_life"):
 		ball.health = BallConfig.Config[ball.form]["health"]
 		ball.set_meta("second_life", true)
 		ball.get_node("Sprite2D").modulate.r = 0.3
 	
-	if randi_range(1, 100) == 1:
-		var spirit = BallConfig.summon_ball("spirit", ball)
+	if ball.player and Input.is_action_just_pressed("ball_ability_1"):
+		summon_spirit(ball)
+		return
+	
+	elif randi_range(1, 100) == 1:
+		summon_spirit(ball)
+
+
+func summon_spirit(ball: Ball):
+	var spirit = BallConfig.summon_ball("spirit", ball)
 		
-		get_tree().create_timer(5).timeout.connect(func():
-			if not spirit or not ball: return	
-			
-			spirit.queue_free()
-		)
+	get_tree().create_timer(5).timeout.connect(func():
+		if not spirit or not ball: return	
+		
+		spirit.queue_free()
+		ball.set_meta("spirits", ball.get_meta("spirits", 0) + 1)
+	)	
 
 
 

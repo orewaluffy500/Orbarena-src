@@ -10,7 +10,7 @@ func _process(delta):
 			if child.pawn: continue
 			final += "[%s] Health: %d " % [child.form + ("" if not child.player else " YOU"), child.health]
 			for meta in child.get_meta_list():
-				if meta == "ball" or meta == "target": continue
+				if ["ball", "target", "endless"].has(meta): continue
 
 				var val = child.get_meta(meta)
 				final += "%s: %s " % [meta.replace("_", " "), val]

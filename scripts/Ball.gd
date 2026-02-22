@@ -21,6 +21,7 @@ class_name Ball
 @export var canTakeSword = true 
 
 
+@onready var fist = false
 @onready var tookDamageCounter = 0
 @onready var swordPivot = $SwordPivot
 @onready var sprite: Sprite2D = $Sprite2D	

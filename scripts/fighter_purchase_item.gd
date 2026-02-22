@@ -27,3 +27,7 @@ func update():
 	if Player.data.unlockedBalls.has(ballName):
 		$BuyButton.disabled = true
 		$BuyButton.text = "Bought"
+
+
+func _process(delta: float) -> void:
+	update()

@@ -1,5 +1,8 @@
 extends Node
 
+@onready var bloodTemplate = preload("res://templates/blood.tscn")
+@onready var damageLabel = preload("res://templates/damage_label.tscn")
+
 
 func cleanUpArena():
 	for child in get_tree().current_scene.get_children():
@@ -52,10 +55,10 @@ func getByLevel(selectors: Dictionary):
 
 
 const upgrades = {
-	"speed": {"price": 1, "max": 8},
-	"health": {"price": 130, "max": 5},
-	"damage": {"price": 150, "max": 10},
-	"heal": {"price": 300, "max": 1}
+	"speed": {"price": 300, "max": 8},
+	"health": {"price": 430, "max": 5},
+	"damage": {"price": 750, "max": 10},
+	"heal": {"price": 2000, "max": 1}
 }
 
 func addUpgrades(ballName):
@@ -102,3 +105,59 @@ func format_number(n: float) -> String:
 		return "%.2fK" % (n / 1_000.0)
 	else:
 		return str(int(n))
+
+
+
+
+func spawn_blood(pos):
+	var blood = bloodTemplate.instantiate()
+	get_tree().current_scene.add_child(blood)
+	blood.global_position = pos
+
+
+func produce_dmgLabel(damage, global_position):
+	var posX = randf_range(global_position.x - 50, global_position.x + 50)
+	var posY = randf_range(global_position.y - 50, global_position.y + 50)
+
+	var pos = Vector2(posX, posY)
+
+	var clone: DamageLabel = damageLabel.instantiate()
+
+	clone.init(str(damage))
+	get_tree().current_scene.add_child(clone)
+
+	clone.global_position = pos
+
+
+func handleHit(parent: Ball, body: Ball, pos: Vector2):
+	var selfSpawner = parent.spawner
+	var selfID = parent.get_instance_id()
+		
+	if body.get_node("CollisionShape2D").disabled == true: return
+	
+	var otherSpawner = body.spawner
+	var otherID = body.get_instance_id()
+	
+	if otherSpawner == selfSpawner or otherID == selfSpawner or selfID == otherSpawner: return
+	
+	var damageOffset = randf_range(0.8, 1.3) + parent.damage_mul
+	var damage = parent.damage
+	
+	if body.shielded and (body.shield != null and body.shield != ""):
+		damage /= ShieldManager.ShieldData[body.shield]["reduction"]
+	
+	body.health -= damage * damageOffset
+	body.health = int(body.health)
+	body.tookDamage = true
+	parent.hitBody = null if randi_range(1, 2) == 1 and body.shielded else body
+	spawn_blood(body.position)
+	produce_dmgLabel(round(damage * damageOffset), pos)
+	
+	parent.cooldown = parent.MAX_COOLDOWN
+	
+	if not body.shielded:
+		Sounds.play_sound(Sounds.Slash, randf_range(0.75, 1.25))
+	else:
+		Sounds.play_sound_batch("shield")
+	
+	
