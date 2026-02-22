@@ -12,7 +12,6 @@ class_name Ball
 @export var summoner = false
 @export var deathSound = Sounds.Pop
 @export var maxHealth: int = 0
-@export var spawner = ResourceUID.create_id()
 @export var shielded = false
 @export var shield = null
 @export var canShield = true
@@ -77,6 +76,9 @@ func disable_sword():
 
 func _ready() -> void:
 
+	if get_meta("team", null):
+		$TeamLabel.text = get_meta("team")
+		$TeamLabel.visible = true
 	
 	# Initialize
 	if name == "Ball1": player = true
@@ -120,10 +122,9 @@ func _ready() -> void:
 		var scene := get_tree().current_scene
 		var ball1 := scene.get_node_or_null("Ball1")
 
-		if ball1 != null and ball1.get_instance_id() == spawner:
+		if ball1 != null and ball1.get_meta("team") == get_meta("team", null):
 			$YouLabel.text = "Ally"
 			$YouLabel.visible = true
-			swordName = ""
 
 	var path = "res://assets/balls/%s.png" % form
 
@@ -147,6 +148,7 @@ func getTotalSpeed():
 func handle_shield_break():
 	if shielded and tookDamageCounter > 3:
 		Sounds.play_sound(Sounds.ShieldBreak)
+		canShield = false
 	elif not shielded:
 		tookDamageCounter = 0
 

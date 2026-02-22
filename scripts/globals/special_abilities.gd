@@ -51,7 +51,7 @@ func ability_king(ball: Ball, delta: float):
 		for i in range(2):
 			Sounds.play_sound(Sounds.Deploy, 50)
 		
-			BallConfig.summon_ball("pawn", ball)
+			BallConfig.summon_ball("pawn", ball.get_meta("team", null))
 
 
 
@@ -66,7 +66,7 @@ func ability_slime(ball: Ball, delta: float):
 	if ball.tookDamage and count < 4:
 		if randi_range(1, 2) == 1:	
 			ball.set_meta("mitosis_count", count + 1)
-			BallConfig.summon_ball("slime_minion", ball)
+			BallConfig.summon_ball("slime_minion", ball.get_meta("team", null))
 			Sounds.play_sound(Sounds.SlimeMitotis)
 
 
@@ -187,7 +187,7 @@ func ability_ghost(ball: Ball, delta: float):
 
 
 func summon_spirit(ball: Ball):
-	var spirit = BallConfig.summon_ball("spirit", ball)
+	var spirit = BallConfig.summon_ball("spirit", ball.get_meta("team", null))
 		
 	get_tree().create_timer(5).timeout.connect(func():
 		if not spirit or not ball: return	

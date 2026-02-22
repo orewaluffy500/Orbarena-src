@@ -35,12 +35,14 @@ func startFight():
 
 	var ball1 = ballTemplate.instantiate()
 	ball1.name = "Ball1"
+	ball1.set_meta("team", "Team1")
 	ball1.position = initialPos
 	ball1.form = fighterSelection.selected
 	scene.add_child(ball1)
 	
 	var ball2 = ballTemplate.instantiate()
 	ball2.name = "Ball2"
+	ball2.set_meta("team", "Team2")
 	ball2.position = initialPos
 	ball2.form = get_random_form(ball1)
 	

@@ -21,6 +21,8 @@ func refresh(_o, _n):
 func learnApplied():
 	var abilityData = Player.data.getSkillData(abilityName)
 
+	var elixirNeeded = abilityData["elixir"] - abilityData["deposited"]
+
 	if abilityData["elixir"] >= Player.data.elixir:
 		abilityData["deposited"] += Player.data.elixir
 		Player.data.elixir = 0

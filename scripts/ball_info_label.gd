@@ -8,12 +8,18 @@ func _process(delta):
 	for child in get_tree().current_scene.get_children():
 		if child is Ball:
 			if child.pawn: continue
-			final += "[%s] Health: %d " % [child.form + ("" if not child.player else " YOU"), child.health]
+			final += "[%s] " % [child.form + ("" if not child.player else " YOU")]
+
+			var count = 0
+
 			for meta in child.get_meta_list():
-				if ["ball", "target", "endless"].has(meta): continue
+				if ["ball", "target", "endless", "team"].has(meta): continue
 
 				var val = child.get_meta(meta)
 				final += "%s: %s " % [meta.replace("_", " "), val]
+				count += 1
+			
+			if count < 1: final += "%d HP" % child.health
 			
 			final += "\n"
 

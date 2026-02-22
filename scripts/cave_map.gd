@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 
 	timeSinceSpawn = 0
 
-	BallConfig.summon_ball("zombie", get_tree().current_scene)
+	BallConfig.summon_ball("zombie")

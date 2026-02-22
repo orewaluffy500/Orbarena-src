@@ -34,7 +34,7 @@ const data = {
 	"Club": {
 		"speed": 3,
 		"damage": 8,
-		"chance": 32
+		"chance": 20
 	},
 }
 

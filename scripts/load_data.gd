@@ -14,6 +14,8 @@ func getJSONChecksumHex(json: PackedByteArray):
 
 func readSaveFile():
 	var saveFile = FileAccess.open("user://save.dat", FileAccess.READ)
+	if not saveFile: return
+	
 	var checksumFile = FileAccess.open("user://save.checksum", FileAccess.READ)
 	
 	var string = saveFile.get_as_text()

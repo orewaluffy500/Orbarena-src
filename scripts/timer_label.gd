@@ -91,7 +91,7 @@ func check_end() -> void:
 				Player.data.wins[player.form] = 1
 			
 			Player.data.coins += coinOutput
-			Player.data.elixir += randi_range(120, 200) + (Player.data.level * 10)
+			Player.data.elixir += randi_range(120, 500) + (Player.data.level * 10)
 			Player.data.experience += randi_range(Player.data.maxExp - 60, Player.data.maxExp + 60)
 
 		Dialogs.show_win_dialog(message)

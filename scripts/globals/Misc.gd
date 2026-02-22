@@ -130,16 +130,14 @@ func produce_dmgLabel(damage, global_position):
 
 
 func handleHit(parent: Ball, body: Ball, pos: Vector2):
-	var selfSpawner = parent.spawner
-	var selfID = parent.get_instance_id()
-		
 	if body.get_node("CollisionShape2D").disabled == true: return
 	
-	var otherSpawner = body.spawner
-	var otherID = body.get_instance_id()
-	
-	if otherSpawner == selfSpawner or otherID == selfSpawner or selfID == otherSpawner: return
-	
+	var selfTeam = parent.get_meta("team", null)
+	var otherTeam = body.get_meta("team", null)
+
+	if selfTeam and otherTeam:
+		if selfTeam == otherTeam: return
+
 	var damageOffset = randf_range(0.8, 1.3) + parent.damage_mul
 	var damage = parent.damage
 	

@@ -45,7 +45,7 @@ func damage_logic(body: Ball):
 func clone_logic(body: Ball):
 	if body.summoner or body.pawn: return
 	
-	BallConfig.summon_ball(body.form, body)
+	BallConfig.summon_ball(body.form, body.get_meta("team", null))
 
 func invincibility_logic(body: Ball):
 	body.get_node("CollisionShape2D").disabled = true

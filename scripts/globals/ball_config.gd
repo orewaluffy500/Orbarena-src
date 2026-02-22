@@ -167,12 +167,12 @@ func get_current_balls():
 	
 	return located_balls
 	
-func summon_ball(form, spawner):
+func summon_ball(form, team = null):
 	var ball = BALL_TEMP.instantiate()
 	ball.form = form
 	ball.pawn = true
 	ball.name = "Ball_Pawn"
-	ball.spawner = spawner.get_instance_id()
+	ball.set_meta("team", team)
 	get_tree().current_scene.add_child.call_deferred(ball)
 	ball.global_position = BALL_SPAWN
 	return ball
