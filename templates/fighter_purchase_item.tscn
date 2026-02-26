@@ -7,11 +7,12 @@
 [ext_resource type="StyleBox" uid="uid://oy2lodxc8760" path="res://ButtonGreen.tres" id="5_wxbp1"]
 [ext_resource type="Script" uid="uid://v8nfmkifur35" path="res://scripts/buy_ball_button.gd" id="6_cbgr1"]
 
-[node name="FighterPurchaseItem" type="Panel" unique_id=1041479272 node_paths=PackedStringArray("heading", "desc", "imageBox")]
+[node name="FighterPurchaseItem" type="Panel" unique_id=1041479272 node_paths=PackedStringArray("buyButton", "heading", "desc", "imageBox")]
 offset_right = 1024.0
 offset_bottom = 192.0
 size_flags_horizontal = 3
 script = ExtResource("1_hgcpi")
+buyButton = NodePath("BuyButton")
 heading = NodePath("Heading")
 desc = NodePath("Desc")
 imageBox = NodePath("Image")

@@ -24,7 +24,8 @@ func _process(delta: float) -> void:
 	for body in area2D.get_overlapping_bodies():
 
 		if body is Ball:
-			Misc.handleHit(parent, body, global_position)
-			$Sprite2D.flip_h = not $Sprite2D.flip_h
-			get_parent().rotationNormal *= -1	
-			
+			var res = Misc.handleHit(parent, body, global_position)
+			if res != 1:
+				$Sprite2D.flip_h = not $Sprite2D.flip_h
+				get_parent().rotationNormal *= -1
+		

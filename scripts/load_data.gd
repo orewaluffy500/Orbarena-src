@@ -40,6 +40,7 @@ func readSaveFile():
 	Player.data.showedMessageFor = json.get_or_add("showedMessageFor", [])
 	Player.data.wins = json.get_or_add("wins", {})
 	Player.data.tutorials = json.get_or_add("tutorials", [])
+	Player.data.elixir = json.get_or_add("elixir", 0)
 	Player.data.setDepositedElixirs(json.get_or_add("deposited", Player.data.getDepositedElixirs()))
 	
 	Dialogs.show_popup("Loaded save file")

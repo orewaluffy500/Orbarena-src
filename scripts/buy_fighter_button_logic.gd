@@ -25,4 +25,5 @@ func _pressed():
 	Player.data.unlockedBalls[form] = {}
 	Sounds.play_sound(Sounds.Buy)
 	Dialogs.show_popup("Bought " + form + "!")
+
 	

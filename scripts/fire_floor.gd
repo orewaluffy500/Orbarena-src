@@ -3,6 +3,12 @@ class_name LavaFloor
 
 @onready var timeLeft = 10
 @onready var touching = []
+@onready var team = ""
+
+
+func init(team_: String):
+	team = team_
+
 func _ready():
 	Sounds.play_sound(Sounds.Lava)
 	body_entered.connect(_on_body_entered)
@@ -10,7 +16,8 @@ func _ready():
 
 func _on_body_entered(body: Ball):
 	if not body is Ball: return
-	if body.form == "arsonist": return
+	if Misc.check_teams(body.get_meta("team", null), team): return
+	
 	touching.append(body)
 	
 func _on_body_exited(body: Ball):

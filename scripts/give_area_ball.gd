@@ -14,8 +14,12 @@ func _input(event: InputEvent) -> void:
 func handle_gift():
 	for body in touching:
 		if body is Ball:
-			if body.spawner != ball.get_instance_id(): continue
+			var team2 = body.get_meta("team", null)
+			var team1 = ball.get_meta("team", null)
 
+			if not team1 or not team2: return
+			if team1 != team2: return
+			
 			if ball.swordName == null or ball.swordName == "": continue
 			
 			if body.swordName == null or body.swordName == "":

@@ -35,6 +35,7 @@ class_name Ball
 @onready var originalScale = Vector2(3, 3)
 @onready var originalScaleCol = Vector2(1.36, 1.36)
 @onready var originalScaleShield = Vector2(2.5, 2.5)
+@onready var originalScaleSword = Vector2(1, 1)
 @onready var scaleModifier = 0
 @onready var stateMachine = StateMachine.new()
 
@@ -194,6 +195,7 @@ func _process(delta: float) -> void:
 	sprite.scale = originalScale * scaleModifier
 	$CollisionShape2D.scale = originalScaleCol * scaleModifier
 	$Shield.scale = originalScaleShield * scaleModifier
+	$SwordPivot/Sword.scale = originalScaleSword * scaleModifier
 	handle_sword_despawn(delta)
 
 	if not canShield:

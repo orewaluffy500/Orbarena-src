@@ -136,7 +136,7 @@ func handleHit(parent: Ball, body: Ball, pos: Vector2):
 	var otherTeam = body.get_meta("team", null)
 
 	if selfTeam and otherTeam:
-		if selfTeam == otherTeam: return
+		if selfTeam == otherTeam: return 1
 
 	var damageOffset = randf_range(0.8, 1.3) + parent.damage_mul
 	var damage = parent.damage
@@ -159,3 +159,9 @@ func handleHit(parent: Ball, body: Ball, pos: Vector2):
 		Sounds.play_sound_batch("shield")
 	
 	
+
+
+func check_teams(team1, team2):
+	if not team1 or not team2: return false
+
+	return team1 == team2

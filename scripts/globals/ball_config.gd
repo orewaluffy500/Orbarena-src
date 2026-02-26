@@ -158,6 +158,15 @@ var Config = {
 @onready var BALL_TEMP = preload("res://templates/ball.res")
 @onready var BALL_SPAWN = Vector2(368, 787)
 
+@onready var BALL_SPAWNS = [
+	Vector2(-747, 730),
+	Vector2(-759, 1110),
+	Vector2(-550, 919),
+]
+
+func get_random_spawn():
+	return BALL_SPAWNS[randi_range(0, BALL_SPAWNS.size() - 1)]
+
 func get_current_balls():
 	var located_balls = []
 	
@@ -167,14 +176,14 @@ func get_current_balls():
 	
 	return located_balls
 	
-func summon_ball(form, team = null):
+func summon_ball(form, team = null, isPawn = false):
 	var ball = BALL_TEMP.instantiate()
 	ball.form = form
-	ball.pawn = true
+	ball.pawn = isPawn
 	ball.name = "Ball_Pawn"
 	ball.set_meta("team", team)
 	get_tree().current_scene.add_child.call_deferred(ball)
-	ball.global_position = BALL_SPAWN
+	ball.global_position = get_random_spawn()
 	return ball
 
 func summon_ball_ex(form, position):

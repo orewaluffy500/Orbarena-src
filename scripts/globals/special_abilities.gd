@@ -51,7 +51,7 @@ func ability_king(ball: Ball, delta: float):
 		for i in range(2):
 			Sounds.play_sound(Sounds.Deploy, 50)
 		
-			BallConfig.summon_ball("pawn", ball.get_meta("team", null))
+			BallConfig.summon_ball("pawn", ball.get_meta("team", null), true)
 
 
 
@@ -66,7 +66,7 @@ func ability_slime(ball: Ball, delta: float):
 	if ball.tookDamage and count < 4:
 		if randi_range(1, 2) == 1:	
 			ball.set_meta("mitosis_count", count + 1)
-			BallConfig.summon_ball("slime_minion", ball.get_meta("team", null))
+			BallConfig.summon_ball("slime_minion", ball.get_meta("team", null), true)
 			Sounds.play_sound(Sounds.SlimeMitotis)
 
 
@@ -147,6 +147,7 @@ func ability_arsonist(ball: Ball, delta: float):
 		var floor = lavaFloor.instantiate()
 		get_tree().current_scene.add_child(floor)
 		floor.global_position = ball.global_position
+		floor.init(ball.get_meta("team", null))
 	
 	var target = ball.get_meta("target")
 	
@@ -172,8 +173,9 @@ func ability_ghost(ball: Ball, delta: float):
 	if not ball: return
 	if not ball.has_meta("second_life"): ball.set_meta("second_life", false)
 	if not ball.has_meta("spirits"): ball.set_meta("spirits", 6)
+	if ball.get_meta("spirits") <= 0: return
 	
-	if ball.health <= 0 and not ball.get_meta("second_life"):
+	if ball.health <= 5 and not ball.get_meta("second_life", false):
 		ball.health = BallConfig.Config[ball.form]["health"]
 		ball.set_meta("second_life", true)
 		ball.get_node("Sprite2D").modulate.r = 0.3
@@ -187,7 +189,9 @@ func ability_ghost(ball: Ball, delta: float):
 
 
 func summon_spirit(ball: Ball):
-	var spirit = BallConfig.summon_ball("spirit", ball.get_meta("team", null))
+	var spirit = BallConfig.summon_ball("spirit", ball.get_meta("team", null), true)
+
+	ball.set_meta("spirits", ball.get_meta("spirits", 0) - 1)
 		
 	get_tree().create_timer(5).timeout.connect(func():
 		if not spirit or not ball: return	

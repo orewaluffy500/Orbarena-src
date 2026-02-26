@@ -3,6 +3,7 @@ class_name ShieldPurchaseItem
 
 var shieldName = ""
 var shieldData = {}
+@export var buyButton: Button
 
 func configure_item(shieldName_):
 	print(shieldName_)
@@ -22,13 +23,16 @@ func configure_item(shieldName_):
 	var defense = data["reduction"]
 
 	configure(texture, shieldName, "Defense: %d Slowness: %d" % [defense, slowness])
-	$BuyButton.text = "%s$" % Misc.format_number(price)
+	buyButton.text = "%s$" % Misc.format_number(price)
 
 
 func update():
 	if Player.data.shields.has(shieldName):
-		$BuyButton.disabled = true
-		$BuyButton.text = "Bought"
+		buyButton.disabled = true
+		buyButton.text = "Bought"
+	else:
+		buyButton.text = "$" + Misc.format_number(shieldData["price"])
+		buyButton.disabled = false
 
 
 func _process(delta: float) -> void:

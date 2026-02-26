@@ -38,7 +38,10 @@ func writeJsonAndChecksum(json: String, checksum: String):
 	
 	Dialogs.show_popup("Saved data")
 
-func _pressed():
+func save():
 	var json = parseIntoJSON()
 	var checksume = getJSONChecksumHex(convertToBytes(json))
 	writeJsonAndChecksum(json, checksume)
+
+func _pressed():
+	save()

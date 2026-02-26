@@ -15,3 +15,12 @@ func _pressed() -> void:
 	disabled = true
 	text = "Bought"
 	Sounds.play_sound(Sounds.Buy)
+
+
+func _process(delta: float) -> void:
+	if Player.data.unlockedBalls.has(ballName):
+		text = "Bought"
+		disabled = true
+	else:
+		text = "$" + Misc.format_number(ballData["price"])
+		disabled = false
