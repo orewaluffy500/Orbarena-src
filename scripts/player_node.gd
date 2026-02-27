@@ -62,6 +62,8 @@ func _ready() -> void:
 	addAbility("Tornado", 4500, 10, "C", "This skill makes your sword super-fast")
 
 func _process(delta):
+	for ball in unlockedBalls:
+		unlockedBalls[ball] = {}
 
 	if elixir >= 1000 and not tutorials.has("first_skill"):
 		tutorials.append("first_skill")

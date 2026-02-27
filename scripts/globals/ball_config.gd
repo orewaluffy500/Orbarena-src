@@ -180,7 +180,6 @@ func summon_ball(form, team = null, isPawn = false):
 	var ball = BALL_TEMP.instantiate()
 	ball.form = form
 	ball.pawn = isPawn
-	ball.name = "Ball_Pawn"
 	ball.set_meta("team", team)
 	get_tree().current_scene.add_child.call_deferred(ball)
 	ball.global_position = get_random_spawn()

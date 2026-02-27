@@ -5,7 +5,7 @@ extends Node
 	"main": Vector2(0, 0),
 	"arena": Vector2(0, 600),
 	"shop": Vector2(1024, 0),
-	"upgrades": Vector2(1024, 600),
+	"battles": Vector2(1024, 600),
 	"shields": Vector2(2048, 0),
 	"skills": Vector2(2048, 600)
 }

@@ -38,6 +38,8 @@ class_name Ball
 @onready var originalScaleSword = Vector2(1, 1)
 @onready var scaleModifier = 0
 @onready var stateMachine = StateMachine.new()
+@onready var invinc = false
+@onready var invincLeft = 3
 
 func handle_sword_despawn(dt):
 	if not swordSprite.visible: return
@@ -192,6 +194,18 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
+	invincLeft -= delta
+	if invincLeft > 0:
+		invinc = true
+		sprite.modulate = Color.GREEN
+	else:
+		invinc = false
+		sprite.modulate = Color.WHITE
+
+	var team = get_meta("team", null)
+	if team:
+		$HealthLabel.modulate = Misc.teamColors[team]
+
 	sprite.scale = originalScale * scaleModifier
 	$CollisionShape2D.scale = originalScaleCol * scaleModifier
 	$Shield.scale = originalScaleShield * scaleModifier

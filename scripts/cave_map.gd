@@ -4,6 +4,8 @@ extends Map
 @onready var ZOMBIE_SPAWN_COOLDOWN = 10
 
 func _process(delta: float) -> void:
+	if Misc.gamemode == "2v2": return
+	
 	if not visible: return
 
 	timeSinceSpawn += delta

@@ -3,6 +3,13 @@ extends Node
 @onready var bloodTemplate = preload("res://templates/blood.tscn")
 @onready var damageLabel = preload("res://templates/damage_label.tscn")
 
+@onready var gamemode = ""
+
+@onready var teamColors = {
+	"RED": Color.from_rgba8(255, 150, 150),
+	"BLUE": Color.from_rgba8(150, 150, 255)
+}
+
 
 func cleanUpArena():
 	for child in get_tree().current_scene.get_children():
@@ -130,7 +137,7 @@ func produce_dmgLabel(damage, global_position):
 
 
 func handleHit(parent: Ball, body: Ball, pos: Vector2):
-	if body.get_node("CollisionShape2D").disabled == true: return
+	if body.invinc: return
 	
 	var selfTeam = parent.get_meta("team", null)
 	var otherTeam = body.get_meta("team", null)

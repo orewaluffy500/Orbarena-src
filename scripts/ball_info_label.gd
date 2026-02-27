@@ -8,7 +8,7 @@ func _process(delta):
 	for child in get_tree().current_scene.get_children():
 		if child is Ball:
 			if child.pawn: continue
-			final += "[%s] " % [child.form + ("" if not child.player else " YOU")]
+			final += "[%s] " % [child.form + (" (%s)" % child.get_meta("team", "") if not child.player else " (YOU)")]
 
 			var count = 0
 

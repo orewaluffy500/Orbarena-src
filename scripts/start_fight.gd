@@ -7,22 +7,36 @@ extends Button
 @onready var initialPos = BallConfig.BALL_SPAWN
 @onready var timerLabel = get_viewport().get_camera_2d().get_node("TimerLabel")
 @onready var arena: Arena = get_tree().current_scene.get_node("Arena")
-@onready var modeSelection: OptionButton = get_parent().get_node("ModeSelection")
 @onready var arenaSprite = arena.get_node("Sprite")
 @onready var maps = arena.maps
 
-func get_mode():
-	return modeSelection.get_item_text(modeSelection.get_selected_id())
+@export var mode = "Brawl"
+
+@onready var require = {
+	"Brawl": 0,
+	"Endless": 5,
+	"2v2": 0
+}
+@onready var originalText = text
 
 func _pressed() -> void:
-	var mode = get_mode()
-
 	if mode == "Brawl": startFight()
 	elif mode == "Endless":
-		if Player.data.level < 5: Dialogs.show_popup("Level 5 or more required for endless mode")
-		else: startFight()
+		if Player.data.level < 5:
+			Dialogs.show_popup("Level 5 or more required for endless mode")
+			return
+		
+		startFight()
+	elif mode == "2v2":
+		if Player.data.level < 0:
+			Dialogs.show_popup("Level 0 or more required for 2 vs 2 mode")
+			return
+		
+		start_fight_2v2()
+	
+	Misc.gamemode = mode
 
-func startFight():
+func fightInit():
 	Misc.hideAllMaps(arena)
 	Misc.cleanUpArena()
 
@@ -33,25 +47,47 @@ func startFight():
 
 	await get_tree().process_frame
 
-	var ball1 = ballTemplate.instantiate()
-	ball1.name = "Ball1"
-	ball1.set_meta("team", "Team1")
-	ball1.position = BallConfig.get_random_spawn()
-	ball1.form = fighterSelection.selected
-	scene.add_child(ball1)
+func createBall(name, team, form):
+	var ball = ballTemplate.instantiate()
+
+	ball.name = name
+	ball.set_meta("team", team)
+	ball.form = form
+
+	return ball
+
+func startFight():
+	fightInit()
 	
-	var ball2 = ballTemplate.instantiate()
-	ball2.name = "Ball2"
-	ball2.set_meta("team", "Team2")
-	ball2.position = BallConfig.get_random_spawn()
-	ball2.form = get_random_form(ball1)
+	var ball1 = createBall("Ball1", "RED", fighterSelection.selected)
+	var ball2 = createBall("Ball2", "BLUE", get_random_form(ball1))
 	
-	if get_mode() == "Endless": ball2.set_meta("endless", true)
+	if mode == "Endless": ball2.set_meta("endless", true)
 	
-	scene.add_child(ball2)
-	
-	timerLabel.timeLeft = 100
+	fightFinalize(120, [ball1, ball2])
+
+
+func fightFinalize(time, balls):
+	for ball in balls:
+		scene.add_child(ball)
+		ball.global_position = BallConfig.get_random_spawn()
+
+	timerLabel.timeLeft = time
 	Screens.change_screen("arena")
+
+
+
+func start_fight_2v2():
+	fightInit()
+	
+	var ball1 = createBall("Ball1", "RED", fighterSelection.selected)
+	var ball2 = createBall("Ball2", "RED", get_random_form(ball1))
+	var ball3 = createBall("Ball3", "BLUE", get_random_form(ball1))
+	var ball4 = createBall("Ball4", "BLUE", get_random_form(ball1))
+	
+	fightFinalize(200, [ball1, ball2, ball3, ball4])
+
+
 
 func get_random_form(ball1: Ball):
 	if ball1.form == "guy":
@@ -68,3 +104,11 @@ func get_random_form(ball1: Ball):
 	
 	return selected
 	
+	
+func _process(delta: float) -> void:
+	if Player.data.level < require[mode]:
+		disabled = true
+		text = "LOCKED (lv. %d)" % require[mode]
+	else:
+		disabled = false
+		text = originalText

@@ -22,3 +22,4 @@ func _process(delta):
 		return
 	
 	Player.data.currentShield = get_item_text(get_selected_id())
+	$Sprite2D.texture = load("res://assets/shields/%s.png" % get_item_text(get_selected_id()))

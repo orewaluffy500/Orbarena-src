@@ -112,7 +112,7 @@ grow_horizontal = 2
 theme = ExtResource("1_ylpcl")
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 70
-text = "ARENA BALLS"
+text = "ARENA ORBS"
 horizontal_alignment = 1
 vertical_alignment = 1
 

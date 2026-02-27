@@ -42,6 +42,8 @@ func check_end() -> void:
 			player_ok = true
 			player = ball
 			continue
+		
+		if Misc.check_teams(ball.get_meta("team", null), "RED"): continue
 
 		if not ball.pawn and not ball.player:
 			balls.append(ball)
@@ -90,8 +92,16 @@ func check_end() -> void:
 			else:
 				Player.data.wins[player.form] = 1
 			
-			Player.data.coins += coinOutput
-			Player.data.elixir += randi_range(120, 500) + (Player.data.level * 10)
-			Player.data.experience += randi_range(Player.data.maxExp - 60, Player.data.maxExp + 60)
+			var exp = randi_range(Player.data.maxExp - 60, Player.data.maxExp + 60)
+
+			if Misc.gamemode != "2v2":
+				Player.data.coins += coinOutput
+				Player.data.elixir += randi_range(120, 500) + (Player.data.level * 10)
+			else:
+				Player.data.coins += randi_range(400, 900)
+				Player.data.elixir += randi_range(400, 1000)
+				exp = randi_range(Player.data.maxExp - 20, Player.data.maxExp + 200)
+			
+			Player.data.experience += exp
 
 		Dialogs.show_win_dialog(message)
