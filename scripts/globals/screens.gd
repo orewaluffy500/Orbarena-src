@@ -7,7 +7,8 @@ extends Node
 	"shop": Vector2(1024, 0),
 	"battles": Vector2(1024, 600),
 	"shields": Vector2(2048, 0),
-	"skills": Vector2(2048, 600)
+	"skills": Vector2(2048, 600),
+	"pratice": Vector2(3072, 600)
 }
 
 @onready var currentScreen = "main"

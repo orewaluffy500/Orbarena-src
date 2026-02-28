@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://b5rhq6emmfbl4" path="res://scripts/button.gd" id="5_n4eug"]
 [ext_resource type="Script" uid="uid://li2vhmcp56vv" path="res://scripts/background_music.gd" id="6_n4eug"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcwhg"]
+bg_color = Color(0.08005793, 0.08005793, 0.08005793, 1)
+
 [node name="Menu" type="Control" unique_id=904476311]
 layout_mode = 3
 anchors_preset = 15
@@ -117,19 +120,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Credit Panel" type="Panel" parent="." unique_id=1565451638]
-visible = false
 top_level = true
 z_index = 200
 layout_mode = 0
 offset_right = 1024.0
 offset_bottom = 602.0
 theme = ExtResource("1_ylpcl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hcwhg")
 script = ExtResource("4_dolsu")
 
 [node name="Label" type="Label" parent="Credit Panel" unique_id=56132918]
 layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 569.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 1033.0
+offset_bottom = 585.0
 theme = ExtResource("1_ylpcl")
 text = " Copyright (c) 2014-present Godot Engine contributors.
   Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
@@ -153,14 +158,13 @@ text = " Copyright (c) 2014-present Godot Engine contributors.
   SOFTWARE.
 
   -- Godot Engine <https://godotengine.org>"
-horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Credit Panel" unique_id=1219991584]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 529.0
-offset_right = 317.0
-offset_bottom = 583.0
+offset_left = 815.0
+offset_top = 536.0
+offset_right = 1015.0
+offset_bottom = 590.0
 text = "Close
 "
 script = ExtResource("5_n4eug")

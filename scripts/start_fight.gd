@@ -21,29 +21,29 @@ extends Button
 
 func _pressed() -> void:
 	if mode == "Brawl": startFight()
+	
 	elif mode == "Endless":
-		if Player.data.level < 5:
+		if Player.data.level < require[mode]:
 			Dialogs.show_popup("Level 5 or more required for endless mode")
 			return
 		
 		startFight()
 	elif mode == "2v2":
-		if Player.data.level < 0:
-			Dialogs.show_popup("Level 0 or more required for 2 vs 2 mode")
+		if Player.data.level < require[mode]:
+			Dialogs.show_popup("Level 10 or more required for 2 vs 2 mode")
 			return
 		
 		start_fight_2v2()
 	
-	Misc.gamemode = mode
 
-func fightInit():
+func fightInit(map = true):
 	Misc.hideAllMaps(arena)
 	Misc.cleanUpArena()
 
 	var idx = randi_range(0, maps.size() - 1)
 	var mapName = maps[idx]
 
-	Misc.setMapVisible(arena, mapName, true)
+	if map: Misc.setMapVisible(arena, mapName, true)
 
 	await get_tree().process_frame
 
@@ -57,7 +57,9 @@ func createBall(name, team, form):
 	return ball
 
 func startFight():
+	arena.toggle_big_mode(false)
 	fightInit()
+	Misc.gamemode = mode
 	
 	var ball1 = createBall("Ball1", "RED", fighterSelection.selected)
 	var ball2 = createBall("Ball2", "BLUE", get_random_form(ball1))
@@ -70,6 +72,11 @@ func startFight():
 func fightFinalize(time, balls):
 	for ball in balls:
 		scene.add_child(ball)
+
+		if ball.name == "Ball1":
+			ball.global_position = BallConfig.BALL_SPAWNS[1]
+			continue
+		
 		ball.global_position = BallConfig.get_random_spawn()
 
 	timerLabel.timeLeft = time
@@ -78,7 +85,13 @@ func fightFinalize(time, balls):
 
 
 func start_fight_2v2():
-	fightInit()
+	arena.toggle_big_mode(true)
+	fightInit(false)
+	Misc.gamemode = mode
+
+	var bigMap = arena.get_node("BigMap")
+	bigMap.position = Vector2.ZERO
+	bigMap.visible = true
 	
 	var ball1 = createBall("Ball1", "RED", fighterSelection.selected)
 	var ball2 = createBall("Ball2", "RED", get_random_form(ball1))
@@ -90,12 +103,18 @@ func start_fight_2v2():
 
 
 func get_random_form(ball1: Ball):
-	if ball1.form == "guy":
-		var res = randi_range(0, 1)
-		if res == 1: return "guy"
-		if res == 0: return "knight"
 	
 	var keys = BallConfig.getFiltered(true)
+
+	var finalKeys = {
+		["guy"]: ["knight", "guy"],
+		["knight"]: ["viking", "guy", "knight"],
+		["viking", "fairy"]: ["viking", "fairy", "king"],
+		["king", "slime"]: ["viking", "posionist", "fairy"],
+		["poisonist", "arsonist", "angel"]: ["king", "arsonist", "poisonist", "slime"],
+		["ghost", "super knight"]: keys,
+	}
+
 	var selected = keys[randi_range(0, keys.size() - 1)]
 
 

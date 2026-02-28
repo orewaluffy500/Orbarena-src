@@ -133,7 +133,7 @@ bg_color = Color(0.07851838, 0.07851838, 0.07851838, 1)
 [sub_resource type="GDScript" id="GDScript_ds8mp"]
 script/source = "extends Camera2D
 
-@onready var uiElements = [$BallInfo1, $PokeAbility, $TornadoAbility, $DualAbility, $TimerLabel, $SheildButton]
+@onready var uiElements = [$BallInfo1, $TimerLabel, $PokeAbility, $DualAbility, $TornadoAbility]
 
 @onready var viewPos := Vector2.ZERO
 @onready var viewPortSize := get_viewport_rect().size
@@ -142,8 +142,15 @@ script/source = "extends Camera2D
 @onready var minView := Vector2(-viewPortSize.x, 0)
 
 func _process(delta: float) -> void:
+
+	if Misc.gamemode == \"2v2\":
+		maxView.y = viewPortSize.y
+		minView.y = 0
+	else:
+		maxView.y = 0
+		minView.y = 0
+	
 	for element in uiElements:
-		if not element: continue
 		element.visible = Screens.currentScreen == \"arena\"
 
 	if Screens.currentScreen != \"arena\":
@@ -269,9 +276,9 @@ modulate = Color(2.4039996, 1.6695954, 0.84764975, 1)
 z_index = -201
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(1024, 301)
-scale = Vector2(8, 4)
+scale = Vector2(8, 8)
 texture = ExtResource("6_5he1h")
+centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 150)
 region_filter_clip_enabled = true
@@ -315,6 +322,50 @@ visible = false
 position = Vector2(1036.0001, 1194)
 scale = Vector2(15.329388, 17.57428)
 shape = SubResource("RectangleShape2D_3mrqo")
+
+[node name="BigWalls" type="Node" parent="Arena" unique_id=1019821290]
+
+[node name="X1" type="StaticBody2D" parent="Arena/BigWalls" unique_id=463164766]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigWalls/X1" unique_id=776538916]
+visible = false
+position = Vector2(-1033, 1187)
+scale = Vector2(15.329388, 17.57428)
+shape = SubResource("RectangleShape2D_3mrqo")
+disabled = true
+
+[node name="Y1" type="StaticBody2D" parent="Arena/BigWalls" unique_id=892695867]
+collision_layer = 3
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Arena/BigWalls/Y1" unique_id=1936810833]
+visible = false
+position = Vector2(-47.5, 552.4769)
+rotation = 1.5707964
+scale = Vector2(17.57428, 15.329388)
+shape = SubResource("RectangleShape2D_xc54d")
+disabled = true
+
+[node name="Y2" type="StaticBody2D" parent="Arena/BigWalls" unique_id=791239304]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigWalls/Y2" unique_id=1822315947]
+visible = false
+position = Vector2(2, 1800)
+rotation = 1.5707964
+scale = Vector2(17.57428, 15.329388)
+shape = SubResource("RectangleShape2D_3h3yf")
+disabled = true
+
+[node name="X2" type="StaticBody2D" parent="Arena/BigWalls" unique_id=980079526]
+collision_layer = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arena/BigWalls/X2" unique_id=1012537382]
+visible = false
+position = Vector2(1036.0001, 1194)
+scale = Vector2(15.329388, 17.57428)
+shape = SubResource("RectangleShape2D_3mrqo")
+disabled = true
 
 [node name="PowerUpMin" type="Node2D" parent="Arena" unique_id=407862893]
 position = Vector2(150, 49)
@@ -469,6 +520,86 @@ scale = Vector2(110.5, 367.00006)
 mesh = SubResource("BoxMesh_hxy8k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/OneWallMap/StaticBody2D4" unique_id=1278321429]
+position = Vector2(0, 50.5)
+shape = SubResource("RectangleShape2D_2t1a5")
+
+[node name="BigMap" type="Node2D" parent="Arena" unique_id=1348161227]
+visible = false
+position = Vector2(0, 1159)
+script = ExtResource("6_2t1a5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/BigMap" unique_id=335117313]
+position = Vector2(264, 308)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Arena/BigMap/StaticBody2D" unique_id=1306207191]
+modulate = Color(0.61534846, 0.27230653, 1.92523e-07, 1)
+position = Vector2(0, 51.50006)
+scale = Vector2(110.5, 367.00006)
+mesh = SubResource("BoxMesh_hxy8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigMap/StaticBody2D" unique_id=586320176]
+position = Vector2(0, 50.5)
+shape = SubResource("RectangleShape2D_2t1a5")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Arena/BigMap" unique_id=310582213]
+position = Vector2(1781, 879)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Arena/BigMap/StaticBody2D2" unique_id=2106648465]
+modulate = Color(0.61534846, 0.27230653, 1.92523e-07, 1)
+position = Vector2(0, 51.50006)
+scale = Vector2(110.5, 367.00006)
+mesh = SubResource("BoxMesh_hxy8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigMap/StaticBody2D2" unique_id=295663732]
+position = Vector2(0, 50.5)
+shape = SubResource("RectangleShape2D_2t1a5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Arena/BigMap" unique_id=748215223]
+position = Vector2(665, 842)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Arena/BigMap/StaticBody2D3" unique_id=587402463]
+modulate = Color(0.61534846, 0.27230653, 1.92523e-07, 1)
+position = Vector2(0, 51.50006)
+scale = Vector2(110.5, 367.00006)
+mesh = SubResource("BoxMesh_hxy8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigMap/StaticBody2D3" unique_id=395493648]
+position = Vector2(0, 50.5)
+shape = SubResource("RectangleShape2D_2t1a5")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Arena/BigMap" unique_id=1352691057]
+position = Vector2(1600, 351)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Arena/BigMap/StaticBody2D4" unique_id=1774570983]
+modulate = Color(0.61534846, 0.27230653, 1.92523e-07, 1)
+position = Vector2(0, 51.50006)
+scale = Vector2(110.5, 367.00006)
+mesh = SubResource("BoxMesh_hxy8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigMap/StaticBody2D4" unique_id=1256727686]
+visible = false
+position = Vector2(0, 50.5)
+shape = SubResource("RectangleShape2D_2t1a5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Arena/BigMap/StaticBody2D4" unique_id=1985868360]
+modulate = Color(0.5531717, 0.28407457, 9.62615e-08, 0.7607843)
+z_index = 1
+position = Vector2(-7.9999976, 20.999994)
+rotation = -1.5707964
+scale = Vector2(0.31640625, 0.31640625)
+texture = ExtResource("15_pbwgg")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Arena/BigMap" unique_id=1724713991]
+position = Vector2(1051.9999, 442)
+rotation = 1.5601794
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Arena/BigMap/StaticBody2D5" unique_id=834717486]
+modulate = Color(0.61534846, 0.27230653, 1.92523e-07, 1)
+position = Vector2(0, 51.50006)
+scale = Vector2(110.5, 367.00006)
+mesh = SubResource("BoxMesh_hxy8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/BigMap/StaticBody2D5" unique_id=505215776]
 position = Vector2(0, 50.5)
 shape = SubResource("RectangleShape2D_2t1a5")
 
@@ -1649,10 +1780,10 @@ script = ExtResource("17_202ut")
 [node name="Seperates" type="Node" parent="." unique_id=2101692247]
 
 [node name="HSeparator" type="HSeparator" parent="Seperates" unique_id=2119087328]
-offset_left = 804.0
-offset_top = 473.0
-offset_right = 1018.0
-offset_bottom = 477.0
+offset_left = 805.0
+offset_top = 466.0
+offset_right = 1019.0
+offset_bottom = 470.0
 
 [node name="HSeparator2" type="HSeparator" parent="Seperates" unique_id=969997253]
 offset_left = 804.0

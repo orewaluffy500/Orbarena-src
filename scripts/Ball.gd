@@ -30,6 +30,7 @@ class_name Ball
 @onready var shieldSystem = ShieldManager
 @onready var timeSinceCouldntShield = 0
 @onready var swordName = ""
+@onready var infSword = false
 @onready var timeSinceHasSword = 0
 @onready var swordSprite = $SwordPivot/Sword/Sprite2D
 @onready var originalScale = Vector2(3, 3)
@@ -39,11 +40,11 @@ class_name Ball
 @onready var scaleModifier = 0
 @onready var stateMachine = StateMachine.new()
 @onready var invinc = false
-@onready var invincLeft = 3
 
 func handle_sword_despawn(dt):
 	if not swordSprite.visible: return
-
+	if infSword: return
+	
 	timeSinceHasSword += dt
 	if timeSinceHasSword > 10:
 		timeSinceHasSword = 0
@@ -194,14 +195,6 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
-	invincLeft -= delta
-	if invincLeft > 0:
-		invinc = true
-		sprite.modulate = Color.GREEN
-	else:
-		invinc = false
-		sprite.modulate = Color.WHITE
-
 	var team = get_meta("team", null)
 	if team:
 		$HealthLabel.modulate = Misc.teamColors[team]

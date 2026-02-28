@@ -31,6 +31,21 @@ class_name Arena
 @export var mapShowPos = Vector2(0, 0)
 @export var mapDefaultPos = Vector2(1156, 0)
 
+func toggle_walls(walls, val):
+	for wall in walls.get_children():
+		var shape = wall.get_node_or_null("CollisionShape2D")
+		if shape:
+			shape.disabled = not val
+
+func toggle_big_mode(value):
+	toggle_walls($BigWalls, value)
+	toggle_walls($Walls, not value)
+		
+
+func _ready() -> void:
+	toggle_big_mode(false)
+
+
 func handle_powerup_spawn(delta):
 	timeSinceSpawn += delta
 	if not timeSinceSpawn > 7.5: return

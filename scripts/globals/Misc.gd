@@ -10,6 +10,15 @@ extends Node
 	"BLUE": Color.from_rgba8(150, 150, 255)
 }
 
+func basedOutput(values, value):
+	var output = []
+
+	for expected in values.keys():
+		if expected.has(value):
+			output = values[expected]
+	
+	return output
+
 
 func cleanUpArena():
 	for child in get_tree().current_scene.get_children():

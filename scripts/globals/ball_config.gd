@@ -164,6 +164,8 @@ var Config = {
 	Vector2(-550, 919),
 ]
 
+@onready var PRATICE_SPAWN = Vector2(3363, 927)
+
 func get_random_spawn():
 	return BALL_SPAWNS[randi_range(0, BALL_SPAWNS.size() - 1)]
 
