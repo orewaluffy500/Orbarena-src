@@ -15,7 +15,7 @@ extends Button
 @onready var require = {
 	"Brawl": 0,
 	"Endless": 5,
-	"2v2": 0
+	"2v2": 12
 }
 @onready var originalText = text
 
@@ -24,13 +24,13 @@ func _pressed() -> void:
 	
 	elif mode == "Endless":
 		if Player.data.level < require[mode]:
-			Dialogs.show_popup("Level 5 or more required for endless mode")
+			Dialogs.show_popup("Level %d or more required for endless mode" % require[mode])
 			return
 		
 		startFight()
 	elif mode == "2v2":
 		if Player.data.level < require[mode]:
-			Dialogs.show_popup("Level 10 or more required for 2 vs 2 mode")
+			Dialogs.show_popup("Level %d or more required for 2 vs 2 mode" % require[mode])
 			return
 		
 		start_fight_2v2()
@@ -106,20 +106,20 @@ func get_random_form(ball1: Ball):
 	
 	var keys = BallConfig.getFiltered(true)
 
-	var finalKeys = {
+	var finalKeys = Misc.basedOutput({
 		["guy"]: ["knight", "guy"],
 		["knight"]: ["viking", "guy", "knight"],
 		["viking", "fairy"]: ["viking", "fairy", "king"],
 		["king", "slime"]: ["viking", "posionist", "fairy"],
 		["poisonist", "arsonist", "angel"]: ["king", "arsonist", "poisonist", "slime"],
 		["ghost", "super knight"]: keys,
-	}
+	}, ball1.form)	
 
-	var selected = keys[randi_range(0, keys.size() - 1)]
+	var selected = finalKeys[randi_range(0, finalKeys.size() - 1)]
 
 
 	while selected == "":
-		selected = keys[randi_range(0, keys.size() - 1)] 
+		selected = finalKeys[randi_range(0, finalKeys.size() - 1)] 
 	
 	return selected
 	

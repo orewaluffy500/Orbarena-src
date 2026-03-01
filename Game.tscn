@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b0qmt2ik43cvj" path="res://scripts/map_type.gd" id="6_2t1a5"]
 [ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="6_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://b2qae4gey5gv3" path="res://assets/misc/bg.png" id="6_5he1h"]
+[ext_resource type="Script" uid="uid://ddyhg1eh5fs2r" path="res://power_up_max.gd" id="6_jofrc"]
 [ext_resource type="Script" uid="uid://cc8v5ad5j6rdc" path="res://scripts/dialog_close_button.gd" id="7_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://cowetbpxibgsy" path="res://assets/backgrounds/Grass.png" id="7_n7324"]
 [ext_resource type="Script" uid="uid://bm17lmlhniy33" path="res://scripts/save_data.gd" id="8_7ged1"]
@@ -133,7 +134,7 @@ bg_color = Color(0.07851838, 0.07851838, 0.07851838, 1)
 [sub_resource type="GDScript" id="GDScript_ds8mp"]
 script/source = "extends Camera2D
 
-@onready var uiElements = [$BallInfo1, $TimerLabel, $PokeAbility, $DualAbility, $TornadoAbility]
+@onready var uiElements = [$BallInfo1, $TimerLabel, $PokeAbility, $DualAbility, $TornadoAbility, $SheildButton]
 
 @onready var viewPos := Vector2.ZERO
 @onready var viewPortSize := get_viewport_rect().size
@@ -372,6 +373,7 @@ position = Vector2(150, 49)
 
 [node name="PowerUpMax" type="Node2D" parent="Arena" unique_id=903804154]
 position = Vector2(1930, 490)
+script = ExtResource("6_jofrc")
 
 [node name="FourColumnMap" type="Node2D" parent="Arena" unique_id=1497819270]
 visible = false

@@ -52,6 +52,7 @@ func handle_powerup_spawn(delta):
 	timeSinceSpawn = 0
 
 	spawn_powerup()
+	if Misc.gamemode == "2v2": spawn_powerup()
 	
 func spawn_powerup():
 	var form = forms[randi_range(0, forms.size() - 1)]
@@ -73,6 +74,7 @@ func handle_sword_spawn(delta):
 	timeSinceSwordSpawn = 0
 
 	spawn_sword()
+	if Misc.gamemode == "2v2": spawn_sword()
 
 func spawn_sword():
 	var swordNames = SwordManager.getWeightedList()
