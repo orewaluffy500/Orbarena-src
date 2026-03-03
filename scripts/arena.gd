@@ -91,5 +91,7 @@ func spawn_sword():
 	clone.global_position = pos
 
 func _process(delta):
+	if Misc.isGameFrozen: return
+
 	handle_powerup_spawn(delta)
 	handle_sword_spawn(delta)

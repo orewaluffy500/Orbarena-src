@@ -11,7 +11,6 @@
 [ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="6_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://b2qae4gey5gv3" path="res://assets/misc/bg.png" id="6_5he1h"]
 [ext_resource type="Script" uid="uid://ddyhg1eh5fs2r" path="res://power_up_max.gd" id="6_jofrc"]
-[ext_resource type="Script" uid="uid://cc8v5ad5j6rdc" path="res://scripts/dialog_close_button.gd" id="7_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://cowetbpxibgsy" path="res://assets/backgrounds/Grass.png" id="7_n7324"]
 [ext_resource type="Script" uid="uid://bm17lmlhniy33" path="res://scripts/save_data.gd" id="8_7ged1"]
 [ext_resource type="Texture2D" uid="uid://bdb2qy8vnl3jh" path="res://assets/backgrounds/Sand.png" id="8_o6tbt"]
@@ -34,6 +33,7 @@
 [ext_resource type="Script" uid="uid://c1cppmtrlk0a2" path="res://scripts/buy_fighter.gd" id="16_elkpi"]
 [ext_resource type="Script" uid="uid://dvo7464adb2c6" path="res://scripts/close_button_screen.gd" id="17_202ut"]
 [ext_resource type="StyleBox" uid="uid://bgilnswgf2ury" path="res://ButtonYellow.tres" id="18_bisgb"]
+[ext_resource type="PackedScene" uid="uid://brsuntqbswv5d" path="res://templates/dialog_base.res" id="18_nsg7d"]
 [ext_resource type="Script" uid="uid://eepnqi5nw6pl" path="res://scripts/fighter_selection.gd" id="20_4my3f"]
 [ext_resource type="Script" uid="uid://bv3q3tej73bon" path="res://scripts/level_bar.gd" id="25_8ktx7"]
 [ext_resource type="Script" uid="uid://li2vhmcp56vv" path="res://scripts/background_music.gd" id="26_bisgb"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://bs7ja8dmvvsc5" path="res://assets/misc/arrow_right.png" id="32_ds8mp"]
 [ext_resource type="Script" uid="uid://dcdoiw5l1udn4" path="res://scripts/skill_shop.gd" id="32_qbkdk"]
 [ext_resource type="Texture2D" uid="uid://cnbbm21dgdygb" path="res://assets/balls/super knight.png" id="34_ndmee"]
+[ext_resource type="Texture2D" uid="uid://dfmfh62xkssgh" path="res://assets/ui/money.png" id="34_nsg7d"]
 [ext_resource type="StyleBox" uid="uid://cwaptxg2w0o0" path="res://ButtonElixir.tres" id="38_f2b8v"]
 [ext_resource type="Script" uid="uid://cborgte8mtjtt" path="res://scripts/elixir_label.gd" id="39_bnith"]
 [ext_resource type="Script" uid="uid://dtfxq31arh4wc" path="res://scripts/shield_selector.gd" id="39_hxy8k"]
@@ -56,19 +57,22 @@
 [ext_resource type="Script" uid="uid://8asiqd72mknf" path="res://scripts/vertical_list.gd" id="45_ndmee"]
 [ext_resource type="Script" uid="uid://dpui4d2ff3al7" path="res://scripts/learn_skills.gd" id="48_0o760"]
 [ext_resource type="Script" uid="uid://tk33usuf5dfb" path="res://scripts/popup_panel.gd" id="48_xc54d"]
+[ext_resource type="Texture2D" uid="uid://0ghp2sextd6" path="res://assets/balls/king.png" id="49_ib0bs"]
 [ext_resource type="FontFile" uid="uid://ofwpri6dk81i" path="res://assets/fonts/TitilliumWeb-Black.ttf" id="50_3h3yf"]
 [ext_resource type="Script" uid="uid://bvnpmd8jg03vh" path="res://scripts/error_label.gd" id="51_nyc7o"]
-[ext_resource type="Texture2D" uid="uid://bo6eqsfishkfo" path="res://assets/ability_buttons/B.png" id="55_yw735"]
+[ext_resource type="Script" uid="uid://dpxq7jt074l3u" path="res://shield_skill_button_animate.gd" id="53_0o760"]
+[ext_resource type="Texture2D" uid="uid://dolrk70xxohcm" path="res://assets/ui/X.png" id="54_jofrc"]
+[ext_resource type="Texture2D" uid="uid://kja5d4ajc5lg" path="res://assets/ui/B.png" id="54_nf2s5"]
 [ext_resource type="Script" uid="uid://bt2uoasgqo0fh" path="res://scripts/ability_button.gd" id="56_lua15"]
-[ext_resource type="Texture2D" uid="uid://gikg3su5s1tg" path="res://assets/ability_buttons/Z.png" id="56_ndmee"]
-[ext_resource type="Texture2D" uid="uid://d32gj6yy7iymt" path="res://assets/ability_buttons/X.png" id="57_pnh27"]
-[ext_resource type="Texture2D" uid="uid://5dbbylcydvtr" path="res://assets/ability_buttons/C.png" id="58_yw735"]
+[ext_resource type="Texture2D" uid="uid://d0nlb0m8h3l8q" path="res://assets/ui/Z.png" id="56_y0hep"]
+[ext_resource type="Texture2D" uid="uid://cce3hy3d52bl4" path="res://assets/ui/C.png" id="57_nf2s5"]
 [ext_resource type="Script" uid="uid://bfyqgfjwlo0u6" path="res://scripts/tutorial_panel.gd" id="60_3l0qi"]
 [ext_resource type="StyleBox" uid="uid://wllt0faq1nyn" path="res://SkewedGray.tres" id="61_bnith"]
 [ext_resource type="Script" uid="uid://bwwebqe7jq4b" path="res://scripts/tutorial_button_main.gd" id="61_eycq6"]
 [ext_resource type="Texture2D" uid="uid://o5xkekleey0v" path="res://assets/shields/Wooden.png" id="61_jofrc"]
 [ext_resource type="FontFile" uid="uid://dve4vu3rnkwo1" path="res://assets/fonts/Galindo-Regular.ttf" id="61_m68t5"]
 [ext_resource type="StyleBox" uid="uid://cnlyg8busi2po" path="res://SkewedDarkGray.tres" id="61_qbkdk"]
+[ext_resource type="Script" uid="uid://cjigjlicsaeak" path="res://begin_fight_button.gd" id="70_y0hep"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t88pq"]
 font_size = 40
@@ -122,14 +126,42 @@ color_ramp = SubResource("Gradient_xc54d")
 radius = 58.5
 height = 161.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_joorw"]
-font = ExtResource("2_r0x5m")
-font_size = 44
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnith"]
 bg_color = Color(0.07851838, 0.07851838, 0.07851838, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_lk38o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h42ht"]
+bg_color = Color(0.8414501, 0.67877096, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qldve"]
+bg_color = Color(0.7407714, 0.27793872, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53373617, 0.23788211, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw122"]
+bg_color = Color(0.60182166, 0.00010425121, 0.5347208, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5512624, 0.0009864878, 0.6818794, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="GDScript" id="GDScript_ds8mp"]
 script/source = "extends Camera2D
@@ -211,10 +243,24 @@ font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0hep"]
+
 [sub_resource type="SystemFont" id="SystemFont_lua15"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qirsl"]
 bg_color = Color(0.0014147494, 0.0014147494, 0.0014147494, 0.7019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf2s5"]
+bg_color = Color(2.466701e-07, 0.2910216, 0.15381163, 1)
+skew = Vector2(0.4, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nt2q"]
+bg_color = Color(0, 0.38803357, 0.21187708, 1)
+skew = Vector2(0.4, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m68t5"]
 bg_color = Color(0.7507619, 0, 0.10562328, 1)
@@ -234,7 +280,7 @@ script = ExtResource("1_xc54d")
 metadata/_edit_vertical_guides_ = [-312.0]
 
 [node name="BG" type="Sprite2D" parent="." unique_id=862557648]
-modulate = Color(0.66288584, 0.66288584, 0.66288584, 1)
+modulate = Color(1.4225532, 1.4225532, 1.4225532, 1)
 z_index = -8
 position = Vector2(0, -1)
 scale = Vector2(32.062496, 18.75)
@@ -242,6 +288,7 @@ texture = ExtResource("2_0o760")
 centered = false
 
 [node name="BackPanel1" type="Sprite2D" parent="." unique_id=948077807]
+modulate = Color(0.93305254, 0.93305254, 0.93305254, 1)
 z_index = -8
 position = Vector2(797, 72)
 scale = Vector2(0.22167967, 0.68749994)
@@ -249,19 +296,48 @@ texture = ExtResource("6_5he1h")
 centered = false
 
 [node name="BackPanel2" type="Sprite2D" parent="." unique_id=1224851589]
+modulate = Color(0.93305254, 0.93305254, 0.93305254, 1)
 z_index = -8
 position = Vector2(0, -7)
-scale = Vector2(1, 0.10546875)
+scale = Vector2(1, 0.11328125)
+texture = ExtResource("6_5he1h")
+centered = false
+
+[node name="BackPanel4" type="Sprite2D" parent="." unique_id=1971411640]
+modulate = Color(0.93305254, 0.93305254, 0.93305254, 1)
+z_index = -8
+position = Vector2(0, 512)
+scale = Vector2(0.99609375, 0.11328125)
+texture = ExtResource("6_5he1h")
+centered = false
+
+[node name="VSeparator" type="VSeparator" parent="BackPanel4" unique_id=1016101664]
+offset_left = 683.6706
+offset_top = 70.62065
+offset_right = 687.6706
+offset_bottom = 706.2071
+
+[node name="VSeparator2" type="VSeparator" parent="BackPanel4" unique_id=2010731416]
+offset_left = 177.69412
+offset_top = 70.62065
+offset_right = 181.69412
+offset_bottom = 706.2071
+
+[node name="BackPanel3" type="Sprite2D" parent="." unique_id=1191030289]
+modulate = Color(0.93305254, 0.93305254, 0.93305254, 1)
+z_index = -8
+position = Vector2(0, -7)
+scale = Vector2(0.1669922, 0.7890625)
 texture = ExtResource("6_5he1h")
 centered = false
 
 [node name="Heading" type="Label" parent="." unique_id=2107184572]
 texture_filter = 2
-offset_left = -56.0
-offset_top = 12.0
-offset_right = 420.0
-offset_bottom = 70.0
-theme_override_fonts/font = ExtResource("3_pbwgg")
+offset_left = 12.0
+offset_top = -1.0
+offset_right = 279.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("50_3h3yf")
 theme_override_font_sizes/font_size = 40
 text = "ARENA ORBS"
 label_settings = SubResource("LabelSettings_t88pq")
@@ -1003,42 +1079,11 @@ scale = Vector2(0.31640625, 0.31640625)
 texture = ExtResource("15_pbwgg")
 flip_h = true
 
-[node name="WinDialog" type="Panel" parent="." unique_id=1670095813]
-visible = false
-z_index = 9
-offset_left = 165.0
-offset_top = 144.0
-offset_right = 840.0
-offset_bottom = 465.0
-theme = ExtResource("6_3mrqo")
-
-[node name="Label" type="Label" parent="WinDialog" unique_id=1434701721]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 33.0
-offset_right = 585.0
-offset_bottom = 185.0
-text = "message"
-label_settings = SubResource("LabelSettings_joorw")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="Button" type="Button" parent="WinDialog" unique_id=805452135]
-layout_mode = 0
-offset_left = 228.0
-offset_top = 202.0
-offset_right = 419.0
-offset_bottom = 277.0
-theme = ExtResource("6_3mrqo")
-text = "Close"
-script = ExtResource("7_3mrqo")
-
 [node name="SaveData" type="Button" parent="." unique_id=1999376662]
-offset_left = 359.0
-offset_top = 18.0
-offset_right = 464.0
-offset_bottom = 64.0
+offset_left = 787.0
+offset_top = 5.0
+offset_right = 892.0
+offset_bottom = 51.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("9_jsoai")
 text = "Save
@@ -1046,10 +1091,10 @@ text = "Save
 script = ExtResource("8_7ged1")
 
 [node name="LoadData" type="Button" parent="." unique_id=2024617790]
-offset_left = 474.0
-offset_top = 18.0
-offset_right = 576.0
-offset_bottom = 64.0
+offset_left = 900.0
+offset_top = 5.0
+offset_right = 1002.0
+offset_bottom = 51.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("9_jsoai")
 text = "Load
@@ -1097,7 +1142,8 @@ offset_top = 7.0
 offset_right = 1017.0
 offset_bottom = 65.0
 theme = ExtResource("6_3mrqo")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = SubResource("SystemFont_lk38o")
+theme_override_font_sizes/font_size = 47
 theme_override_styles/normal = ExtResource("9_yyih5")
 text = "X"
 script = ExtResource("17_202ut")
@@ -1124,10 +1170,10 @@ script = ExtResource("45_ndmee")
 [node name="MatchSelection" type="Node" parent="." unique_id=628286385]
 
 [node name="StartFight" type="Button" parent="MatchSelection" unique_id=2021503764]
-offset_left = 812.0
-offset_top = 505.0
-offset_right = 1018.0
-offset_bottom = 592.0
+offset_left = 10.0
+offset_top = 523.0
+offset_right = 166.0
+offset_bottom = 589.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("9_yyih5")
 text = "Battle!"
@@ -1136,25 +1182,49 @@ script = ExtResource("30_f2b8v")
 [node name="PlayerNode" type="Node" parent="." unique_id=1960263425]
 script = ExtResource("12_gwjdr")
 
+[node name="WinDialog" parent="." unique_id=987566115 instance=ExtResource("18_nsg7d")]
+visible = false
+position = Vector2(114, 73)
+
+[node name="Titlelabel" parent="WinDialog" index="2" unique_id=1226111292]
+text = "Game Ended"
+
+[node name="Message" type="Label" parent="WinDialog" unique_id=208065049]
+offset_left = 22.0
+offset_top = 77.0
+offset_right = 748.0
+offset_bottom = 414.0
+theme = ExtResource("6_3mrqo")
+theme_override_fonts/font = ExtResource("61_m68t5")
+theme_override_font_sizes/font_size = 40
+text = "HELLO WORLD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CoinLabel" type="Label" parent="." unique_id=258245850]
-offset_left = 584.0
-offset_top = 18.0
-offset_right = 780.0
-offset_bottom = 64.0
+offset_left = 808.0
+offset_top = 96.0
+offset_right = 1004.0
+offset_bottom = 142.0
 theme = ExtResource("6_3mrqo")
 theme_override_colors/font_color = Color(0.93, 1, 1, 1)
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = ExtResource("18_bisgb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h42ht")
 text = "COINS"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("14_cpsxm")
 
+[node name="Sprite2D" type="Sprite2D" parent="CoinLabel" unique_id=755692289]
+position = Vector2(25, 23)
+scale = Vector2(1.359375, 1.359375)
+texture = ExtResource("34_nsg7d")
+
 [node name="ElixirLabel" type="Label" parent="." unique_id=1313714660]
-offset_left = 810.0
-offset_top = 121.0
-offset_right = 1004.0
-offset_bottom = 167.0
+offset_left = 808.0
+offset_top = 153.0
+offset_right = 1002.0
+offset_bottom = 199.0
 theme = ExtResource("6_3mrqo")
 theme_override_colors/font_color = Color(0.93, 1, 1, 1)
 theme_override_font_sizes/font_size = 26
@@ -1164,17 +1234,19 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("39_bnith")
 
-[node name="Sprite2D" type="Sprite2D" parent="ElixirLabel" unique_id=755692289]
+[node name="Sprite2D2" type="Sprite2D" parent="ElixirLabel" unique_id=1293382887]
 position = Vector2(25.000015, 23)
 scale = Vector2(1.359375, 1.359375)
 texture = ExtResource("40_bnith")
 
 [node name="LevelLabel" type="Label" parent="." unique_id=1612508948]
-offset_left = 790.0
-offset_top = 13.0
-offset_right = 1006.0
-offset_bottom = 51.0
+offset_left = 416.0
+offset_top = 15.0
+offset_right = 632.0
+offset_bottom = 53.0
 theme = ExtResource("6_3mrqo")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 26
 text = "LEVEL"
 horizontal_alignment = 1
@@ -1183,10 +1255,10 @@ script = ExtResource("15_hmewc")
 
 [node name="LevelBar" type="ProgressBar" parent="." unique_id=1292799505]
 clip_contents = true
-offset_left = 794.0
-offset_top = 47.0
-offset_right = 1010.0
-offset_bottom = 64.0
+offset_left = 288.0
+offset_top = 57.0
+offset_right = 763.0
+offset_bottom = 74.0
 theme = ExtResource("6_3mrqo")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/background = ExtResource("9_jsoai")
@@ -1199,7 +1271,7 @@ z_index = 1
 layout_mode = 0
 offset_left = -2.0
 offset_top = -3.0
-offset_right = 214.0
+offset_right = 476.0
 offset_bottom = 19.0
 theme = ExtResource("6_3mrqo")
 theme_override_font_sizes/font_size = 16
@@ -1209,24 +1281,35 @@ vertical_alignment = 1
 script = ExtResource("28_wdm1y")
 
 [node name="BuyShields" type="Button" parent="." unique_id=1928103724]
-offset_left = 811.0
-offset_top = 301.0
-offset_right = 1018.0
-offset_bottom = 365.0
+offset_left = 696.0
+offset_top = 526.0
+offset_right = 796.0
+offset_bottom = 590.0
 theme = ExtResource("6_3mrqo")
-theme_override_styles/normal = ExtResource("15_qjyg3")
-text = "Shields"
+theme_override_styles/normal = SubResource("StyleBoxFlat_qldve")
+text = "G
+"
 script = ExtResource("29_xwkxq")
 
+[node name="Sprite2D" type="Sprite2D" parent="BuyShields" unique_id=386132924]
+position = Vector2(50, 31)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("61_jofrc")
+
 [node name="LearnSkills" type="Button" parent="." unique_id=1834794961]
-offset_left = 810.0
-offset_top = 232.0
-offset_right = 1017.0
-offset_bottom = 296.0
+offset_left = 806.0
+offset_top = 527.0
+offset_right = 906.0
+offset_bottom = 591.0
 theme = ExtResource("6_3mrqo")
-theme_override_styles/normal = ExtResource("15_qjyg3")
-text = "Skills"
+theme_override_styles/normal = SubResource("StyleBoxFlat_mw122")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mw122")
 script = ExtResource("48_0o760")
+
+[node name="Sprite2D" type="Sprite2D" parent="LearnSkills" unique_id=654368653]
+position = Vector2(50, 31)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("40_bnith")
 
 [node name="SheildShop" type="Panel" parent="." unique_id=1155151970]
 top_level = true
@@ -1288,7 +1371,8 @@ offset_top = 9.0
 offset_right = 1000.0
 offset_bottom = 77.0
 theme = ExtResource("6_3mrqo")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = SubResource("SystemFont_lk38o")
+theme_override_font_sizes/font_size = 47
 theme_override_styles/normal = ExtResource("9_yyih5")
 text = "X"
 script = ExtResource("17_202ut")
@@ -1344,20 +1428,25 @@ offset_top = 9.0
 offset_right = 1000.0
 offset_bottom = 77.0
 theme = ExtResource("6_3mrqo")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = SubResource("SystemFont_lk38o")
+theme_override_font_sizes/font_size = 47
 theme_override_styles/normal = ExtResource("9_yyih5")
 text = "X"
 script = ExtResource("17_202ut")
 
 [node name="BuyFighter" type="Button" parent="BuyFighterGroup" unique_id=448246474]
-offset_left = 810.0
-offset_top = 371.0
-offset_right = 1017.0
-offset_bottom = 435.0
+offset_left = 915.0
+offset_top = 528.0
+offset_right = 1015.0
+offset_bottom = 592.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("15_qjyg3")
-text = "Shop"
 script = ExtResource("16_elkpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="BuyFighterGroup/BuyFighter" unique_id=1429196533]
+position = Vector2(49, 32)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("49_ib0bs")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1514524907]
 anchor_mode = 0
@@ -1416,8 +1505,10 @@ script = ExtResource("3_yhmtn")
 [node name="ErrorLabel" type="Label" parent="Camera2D" unique_id=395376745]
 modulate = Color(1, 1, 1, 0)
 z_index = 20
-offset_right = 1024.0
-offset_bottom = 111.0
+offset_left = -918.0
+offset_top = -299.0
+offset_right = 106.0
+offset_bottom = -188.0
 theme = ExtResource("6_3mrqo")
 theme_override_colors/font_color = Color(1, 0.33333334, 0.33333334, 1)
 theme_override_colors/font_outline_color = Color(0.5731139, 1.4198572e-06, 3.3691526e-07, 1)
@@ -1437,11 +1528,15 @@ offset_top = 332.00003
 offset_right = 1047.9143
 offset_bottom = 426.9025
 scale = Vector2(0.6, 0.6)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y0hep")
+script = ExtResource("53_0o760")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/SheildButton" unique_id=790335705]
-scale = Vector2(3, 3)
-texture = ExtResource("55_yw735")
+scale = Vector2(6, 6)
+texture = ExtResource("54_nf2s5")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Label" type="Label" parent="Camera2D/SheildButton" unique_id=657044317]
 visible = false
@@ -1482,15 +1577,17 @@ offset_top = 396.0
 offset_right = 1047.9143
 offset_bottom = 490.90247
 scale = Vector2(0.6, 0.6)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y0hep")
 script = ExtResource("56_lua15")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/PokeAbility" unique_id=1619054142]
-scale = Vector2(3, 3)
-texture = ExtResource("56_ndmee")
+scale = Vector2(6, 6)
+texture = ExtResource("56_y0hep")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Label" type="Label" parent="Camera2D/PokeAbility" unique_id=1819552999]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1501,7 +1598,6 @@ theme = ExtResource("6_3mrqo")
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = SubResource("SystemFont_lua15")
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_qirsl")
 text = "10.0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1527,16 +1623,19 @@ offset_top = 525.0
 offset_right = 1047.9143
 offset_bottom = 619.90247
 scale = Vector2(0.6, 0.6)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y0hep")
 script = ExtResource("56_lua15")
 abilityName = "Tornado"
+keycode = 67
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/TornadoAbility" unique_id=795972247]
-scale = Vector2(3, 3)
-texture = ExtResource("58_yw735")
+scale = Vector2(6, 6)
+texture = ExtResource("57_nf2s5")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Label" type="Label" parent="Camera2D/TornadoAbility" unique_id=1416677858]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1547,7 +1646,6 @@ theme = ExtResource("6_3mrqo")
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = SubResource("SystemFont_lua15")
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_qirsl")
 text = "10.0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1573,16 +1671,19 @@ offset_top = 462.00003
 offset_right = 1047.9143
 offset_bottom = 556.90247
 scale = Vector2(0.6, 0.6)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y0hep")
 script = ExtResource("56_lua15")
 abilityName = "Dual"
+keycode = 88
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/DualAbility" unique_id=570224977]
-scale = Vector2(3, 3)
-texture = ExtResource("57_pnh27")
+scale = Vector2(6, 6)
+texture = ExtResource("54_jofrc")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Label" type="Label" parent="Camera2D/DualAbility" unique_id=1034583284]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1593,7 +1694,6 @@ theme = ExtResource("6_3mrqo")
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = SubResource("SystemFont_lua15")
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_qirsl")
 text = "10.0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1611,23 +1711,35 @@ theme_override_font_sizes/font_size = 33
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TutorialPanel" type="Panel" parent="Camera2D" unique_id=1080737446]
-visible = false
-top_level = true
+[node name="BeginFightButton" type="Button" parent="Camera2D" unique_id=1293338328]
+modulate = Color(1, 1, 1, 0)
 z_index = 4096
-offset_left = 60.0
-offset_top = 70.0
-offset_right = 960.00006
-offset_bottom = 519.9999
+offset_left = 330.0
+offset_top = 833.0
+offset_right = 634.0
+offset_bottom = 959.1859
 theme = ExtResource("6_3mrqo")
+theme_override_fonts/font = ExtResource("3_pbwgg")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_nf2s5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1nt2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nt2q")
+text = "START"
+script = ExtResource("70_y0hep")
+
+[node name="TutorialPanel" parent="Camera2D" unique_id=2025844868 instance=ExtResource("18_nsg7d")]
+visible = false
+position = Vector2(114, 73)
 script = ExtResource("60_3l0qi")
 
+[node name="Titlelabel" parent="Camera2D/TutorialPanel" index="2" unique_id=1226111292]
+text = "Tutorial"
+
 [node name="Label" type="Label" parent="Camera2D/TutorialPanel" unique_id=376937756]
-layout_mode = 0
-offset_left = 20.001282
-offset_top = 14.325928
-offset_right = 879.0013
-offset_bottom = 353.32593
+offset_left = 18.0
+offset_top = 76.0
+offset_right = 754.0
+offset_bottom = 415.0
 theme_override_fonts/font = ExtResource("61_m68t5")
 theme_override_font_sizes/font_size = 24
 text = "Welcome"
@@ -1635,31 +1747,19 @@ autowrap_mode = 3
 
 [node name="NextButton" type="Button" parent="Camera2D/TutorialPanel" unique_id=2052934227]
 y_sort_enabled = true
-layout_mode = 0
-offset_left = 84.00128
-offset_top = 364.32593
-offset_right = 431.00128
-offset_bottom = 435.32593
+offset_left = 597.0
+offset_top = 366.0
+offset_right = 757.00006
+offset_bottom = 422.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("15_qjyg3")
 text = "Next"
 
-[node name="CloseButton" type="Button" parent="Camera2D/TutorialPanel" unique_id=1239663733]
-y_sort_enabled = true
-layout_mode = 0
-offset_left = 439.00128
-offset_top = 364.32593
-offset_right = 786.0013
-offset_bottom = 435.32593
-theme = ExtResource("6_3mrqo")
-theme_override_styles/normal = ExtResource("9_yyih5")
-text = "Close"
-
 [node name="MainTutorialButton" type="Button" parent="." unique_id=957920456]
-offset_left = 6.0
-offset_top = 531.0
-offset_right = 201.0
-offset_bottom = 596.0
+offset_left = 10.0
+offset_top = 445.0
+offset_right = 164.0
+offset_bottom = 510.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = ExtResource("9_jsoai")
 text = "Tutorial"
@@ -1667,15 +1767,15 @@ script = ExtResource("61_eycq6")
 
 [node name="ShieldSelector" type="OptionButton" parent="." unique_id=275795251]
 modulate = Color(1.224127, 1.224127, 1.224127, 1)
-offset_left = 208.0
-offset_top = 512.0
-offset_right = 584.0
-offset_bottom = 565.0
+offset_left = 183.0
+offset_top = 446.0
+offset_right = 373.0
+offset_bottom = 499.0
 script = ExtResource("39_hxy8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShieldSelector" unique_id=827321173]
 z_index = 1
-position = Vector2(257, -161.00002)
+position = Vector2(362, -116.000015)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("61_jofrc")
 
@@ -1689,7 +1789,7 @@ offset_bottom = 1200.0
 layout_mode = 0
 offset_left = 73.0
 offset_top = 220.0
-offset_right = 359.0
+offset_right = 365.0
 offset_bottom = 412.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_m68t5")
@@ -1701,10 +1801,10 @@ script = ExtResource("9_2vekm")
 
 [node name="EndlessMode" type="Button" parent="BattlePanel" unique_id=2095044435]
 layout_mode = 0
-offset_left = 371.0
-offset_top = 220.0
+offset_left = 362.0
+offset_top = 228.0
 offset_right = 657.0
-offset_bottom = 412.0
+offset_bottom = 402.0
 theme = ExtResource("6_3mrqo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f2b8v")
 theme_override_styles/pressed = ExtResource("61_qbkdk")
@@ -1716,7 +1816,7 @@ mode = "Endless"
 
 [node name="DuoMode" type="Button" parent="BattlePanel" unique_id=955437227]
 layout_mode = 0
-offset_left = 671.0
+offset_left = 656.0
 offset_top = 220.0
 offset_right = 957.0
 offset_bottom = 412.0
@@ -1729,11 +1829,12 @@ text = "2 VS 2"
 script = ExtResource("9_2vekm")
 mode = "2v2"
 
-[node name="FighterSelection" type="Node" parent="BattlePanel" unique_id=1373272530]
+[node name="FighterSelection" type="Node2D" parent="BattlePanel" unique_id=1331398719]
+position = Vector2(-947, -628)
 script = ExtResource("20_4my3f")
 
 [node name="Sprite2D" type="Sprite2D" parent="BattlePanel/FighterSelection" unique_id=427091403]
-position = Vector2(400, 304.5)
+position = Vector2(396, 309)
 scale = Vector2(6, 6)
 texture = ExtResource("34_ndmee")
 
@@ -1774,21 +1875,22 @@ offset_top = 36.0
 offset_right = 123.0
 offset_bottom = 104.0
 theme = ExtResource("6_3mrqo")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = SubResource("SystemFont_lk38o")
+theme_override_font_sizes/font_size = 47
 theme_override_styles/normal = ExtResource("9_yyih5")
 text = "X"
 script = ExtResource("17_202ut")
 
-[node name="Seperates" type="Node" parent="." unique_id=2101692247]
-
-[node name="HSeparator" type="HSeparator" parent="Seperates" unique_id=2119087328]
-offset_left = 805.0
+[node name="Label" type="Label" parent="." unique_id=948273727]
+offset_left = 813.0
 offset_top = 466.0
-offset_right = 1019.0
-offset_bottom = 470.0
+offset_right = 1008.0
+offset_bottom = 512.0
+theme = ExtResource("6_3mrqo")
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="Seperates" unique_id=969997253]
-offset_left = 804.0
-offset_top = 195.0
-offset_right = 1018.0
-offset_bottom = 199.0
+[editable path="WinDialog"]
+[editable path="Camera2D/TutorialPanel"]

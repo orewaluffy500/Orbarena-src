@@ -15,7 +15,8 @@ extends Button
 @onready var require = {
 	"Brawl": 0,
 	"Endless": 5,
-	"2v2": 12
+	"2v2": 10,
+	"boss": 0
 }
 @onready var originalText = text
 
@@ -37,6 +38,7 @@ func _pressed() -> void:
 	
 
 func fightInit(map = true):
+	Misc.isGameFrozen = true
 	Misc.hideAllMaps(arena)
 	Misc.cleanUpArena()
 

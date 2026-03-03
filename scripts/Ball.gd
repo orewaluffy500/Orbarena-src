@@ -29,8 +29,9 @@ class_name Ball
 @onready var player = false
 @onready var shieldSystem = ShieldManager
 @onready var timeSinceCouldntShield = 0
-@onready var swordName = ""
+@onready var swordName = "Club"
 @onready var infSword = false
+@onready var damageTaken = 0
 @onready var timeSinceHasSword = 0
 @onready var swordSprite = $SwordPivot/Sword/Sprite2D
 @onready var originalScale = Vector2(3, 3)
@@ -38,8 +39,8 @@ class_name Ball
 @onready var originalScaleShield = Vector2(2.5, 2.5)
 @onready var originalScaleSword = Vector2(1, 1)
 @onready var scaleModifier = 0
-@onready var stateMachine = StateMachine.new()
 @onready var invinc = false
+@onready var bloodSpawnCooldown = 0
 
 func handle_sword_despawn(dt):
 	if not swordSprite.visible: return
@@ -90,8 +91,6 @@ func _ready() -> void:
 	if player:
 		$YouLabel.visible = true
 		shield = Player.data.currentShield
-	else:
-		swordName = "Sword"
 	
 	
 	damage_mul = 1
@@ -112,7 +111,6 @@ func _ready() -> void:
 	
 	# Configuration
 	BallConfig.configurate_ball(self)
-	stateMachine.create(self)
 	
 	if player and not form == "guy":
 		damage /= 1.5
@@ -158,10 +156,10 @@ func handle_shield_break():
 
 
 func _physics_process(delta: float) -> void:
+	freeze = Misc.isGameFrozen
 	if tookDamage:
 		get_tree().create_timer(.03).timeout.connect(func():
 			if self:
-				tookDamage = false
 				if shielded: tookDamageCounter += 1
 		)
 	
@@ -195,9 +193,16 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
+	tookDamage = damageTaken
+
+	if damageTaken > 0 and not invinc and not Misc.isGameFrozen:
+		health -= damageTaken
+		damageTaken = 0
+
 	var team = get_meta("team", null)
 	if team:
 		$HealthLabel.modulate = Misc.teamColors[team]
+
 
 	sprite.scale = originalScale * scaleModifier
 	$CollisionShape2D.scale = originalScaleCol * scaleModifier
@@ -213,19 +218,7 @@ func _process(delta: float) -> void:
 	
 	shielded = $Shield.visible
 	
-	if not player: return
-	
-	var upgrades =  Player.data.unlockedBalls[form]
-	if upgrades.has("heal") and upgrades["heal"] > 0:
-		var res = randi_range(1, 250)
-		if res == 1:
-			health += 10
-			Sounds.play_sound(Sounds.Heal)
-	
-	if $CollisionShape2D.disabled == true:
-		sprite.modulate.a = 0.5
-	else:
-		sprite.modulate.a = 1
+	handle_states(delta)
 
 
 func _input(event: InputEvent) -> void:
@@ -234,9 +227,15 @@ func _input(event: InputEvent) -> void:
 		SkillManager.handle_execution(self, $SwordPivot/Sword, $SwordPivot, event)
 
 
+func handle_states(dt):
+	pass
+
+
 func handle_movement():
 	linear_velocity = Vector2.ZERO
 	
+	if Misc.isGameFrozen: return
+
 	if Input.is_key_pressed(KEY_W):
 		linear_velocity.y = -1
 	if Input.is_key_pressed(KEY_S):

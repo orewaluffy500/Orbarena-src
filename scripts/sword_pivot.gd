@@ -17,6 +17,7 @@ func _ready() -> void:
 		rotationNormal = -1
 
 func _physics_process(_delta: float) -> void:
+	if Misc.isGameFrozen: return
 	if get_parent().swordName == "" and twin: queue_free()
 	if twin:
 		rotation = -bro.rotation

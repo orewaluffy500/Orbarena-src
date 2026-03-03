@@ -10,6 +10,9 @@ extends Node
 	"BLUE": Color.from_rgba8(150, 150, 255)
 }
 
+@onready var isGameFrozen = false
+
+
 func basedOutput(values, value):
 	var output = []
 
@@ -125,10 +128,12 @@ func format_number(n: float) -> String:
 
 
 
-func spawn_blood(pos):
+func spawn_blood(body):
 	var blood = bloodTemplate.instantiate()
 	get_tree().current_scene.add_child(blood)
-	blood.global_position = pos
+	blood.global_position = body.position
+	
+	blood.scale *= randf_range(0.9, 1.2)
 
 
 func produce_dmgLabel(damage, global_position):
@@ -146,7 +151,7 @@ func produce_dmgLabel(damage, global_position):
 
 
 func handleHit(parent: Ball, body: Ball, pos: Vector2):
-	if body.invinc: return
+	if body.invinc or isGameFrozen: return
 	
 	var selfTeam = parent.get_meta("team", null)
 	var otherTeam = body.get_meta("team", null)
@@ -160,11 +165,9 @@ func handleHit(parent: Ball, body: Ball, pos: Vector2):
 	if body.shielded and (body.shield != null and body.shield != ""):
 		damage /= ShieldManager.ShieldData[body.shield]["reduction"]
 	
-	body.health -= damage * damageOffset
-	body.health = int(body.health)
-	body.tookDamage = true
+	body.damageTaken = damage * damageOffset
 	parent.hitBody = null if randi_range(1, 2) == 1 and body.shielded else body
-	spawn_blood(body.position)
+	spawn_blood(body)
 	produce_dmgLabel(round(damage * damageOffset), pos)
 	
 	parent.cooldown = parent.MAX_COOLDOWN

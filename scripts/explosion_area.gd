@@ -9,7 +9,7 @@ func body_enter(body: Ball):
 	if body.get_instance_id() == get_parent().explosionMaker: return
 	if not body is Ball or damaged.has(body.get_instance_id()): return
 
-	body.health = body.health - damage
+	body.damageTaken += damage
 	damaged.append(body.get_instance_id())
 
 

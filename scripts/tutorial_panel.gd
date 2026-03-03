@@ -1,4 +1,4 @@
-extends Panel
+extends Node2D
 class_name TutorialPanel
 
 
@@ -35,6 +35,3 @@ func next_line():
 
 func _ready() -> void:
 	$NextButton.pressed.connect(next_line)
-	$CloseButton.pressed.connect(func():
-		visible = false
-	)

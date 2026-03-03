@@ -23,4 +23,4 @@ func _process(delta: float) -> void:
 
 	for body in touching:
 		if body is Ball:
-			body.health -= 2
+			body.damageTaken += 2

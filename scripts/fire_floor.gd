@@ -27,7 +27,7 @@ func _on_body_exited(body: Ball):
 
 func _process(delta):
 	for body: Ball in touching:
-		body.health -= 5 * delta
+		body.damageTaken += 5 * delta
 	
 	timeLeft -= delta
 	if timeLeft < 0: queue_free()

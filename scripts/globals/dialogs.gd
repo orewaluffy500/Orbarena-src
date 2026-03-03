@@ -16,7 +16,7 @@ func _scene_changed():
 
 func show_win_dialog(message):
 	winDialog.show()
-	winDialog.get_node("Label").text = message
+	winDialog.get_node("Message").text = message
 
 func show_popup(message):
 	popupDialog.show_message(message)
