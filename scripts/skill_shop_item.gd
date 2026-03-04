@@ -16,7 +16,7 @@ func refresh(_o, _n):
 	
 	desc.text = data["desc"]
 	heading.text = abilityName
-	imageBox.texture = load("res://assets/ability_buttons/%s.png" % data["texture"])
+	imageBox.texture = load("res://assets/ui/%s.png" % data["texture"])
 
 func learnApplied():
 	var abilityData = Player.data.getSkillData(abilityName)

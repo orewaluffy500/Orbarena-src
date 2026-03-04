@@ -1,7 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://c073ccqh1h2mu"]
 
+[ext_resource type="FontFile" uid="uid://de4xlc6hdnrrg" path="res://assets/fonts/PixelifySans-Regular.ttf" id="1_v6rdc"]
 [ext_resource type="FontFile" uid="uid://dve4vu3rnkwo1" path="res://assets/fonts/Galindo-Regular.ttf" id="2_otaay"]
-[ext_resource type="FontFile" uid="uid://u3vj5n3qh43m" path="res://assets/fonts/Bungee-Regular.ttf" id="2_v6rdc"]
+[ext_resource type="FontFile" uid="uid://nr0f3dba3iu7" path="res://assets/fonts/PixelifySans-Medium.ttf" id="2_wfiod"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfiod"]
 bg_color = Color(0.15251291, 0.15251291, 0.15251285, 1)
@@ -30,10 +31,10 @@ corner_radius_bottom_left = 10
 [resource]
 default_font = ExtResource("2_otaay")
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("2_otaay")
+Button/fonts/font = ExtResource("1_v6rdc")
 Button/styles/disabled = SubResource("StyleBoxFlat_wfiod")
 Button/styles/hover = SubResource("StyleBoxFlat_bxk88")
 Button/styles/normal = SubResource("StyleBoxFlat_otaay")
 ItemList/font_sizes/font_size = 24
-Label/fonts/font = ExtResource("2_v6rdc")
+Label/fonts/font = ExtResource("2_wfiod")
 Panel/styles/panel = SubResource("StyleBoxFlat_v6rdc")

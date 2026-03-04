@@ -19,7 +19,7 @@ freeze_mode = 1
 script = ExtResource("2_4ahg1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword" unique_id=992447980]
-position = Vector2(0, -96)
+position = Vector2(-3.8146973e-06, -77.00001)
 rotation = -0.7853982
 scale = Vector2(4, 4)
 script = ExtResource("3_wvb8b")
@@ -30,6 +30,6 @@ scale = Vector2(1.2799987, 1.2799987)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Area" unique_id=384999585]
-position = Vector2(2.7755607e-15, -81.250084)
+position = Vector2(1.1920929e-07, -70.31257)
 scale = Vector2(1.3199993, 1.3199993)
 shape = SubResource("CapsuleShape2D_nmcul")

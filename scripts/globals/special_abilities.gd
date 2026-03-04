@@ -123,7 +123,7 @@ func ability_poisonist(ball: Ball, delta: float):
 	if ball.hitBody:
 		if not ball: return
 		ball.set_meta("target", ball.hitBody)
-		get_tree().create_timer(7.5).timeout.connect(func():
+		get_tree().create_timer(3.5).timeout.connect(func():
 			if not ball: return
 			ball.set_meta("target", null)	
 		)
@@ -162,9 +162,6 @@ func ability_arsonist(ball: Ball, delta: float):
 	if target:
 		target.health -= 5 * delta
 		return
-
-
-
 
 
 

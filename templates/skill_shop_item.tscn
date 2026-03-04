@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wrhlv5erldfu"]
 
-[ext_resource type="Script" uid="uid://dh6i50j3xywfo" path="res://templates/skill_shop_item.gd" id="1_kklga"]
+[ext_resource type="Script" uid="uid://dh6i50j3xywfo" path="res://scripts/skill_shop_item.gd" id="1_kklga"]
 [ext_resource type="Texture2D" uid="uid://ceadq67gahv7g" path="res://assets/balls/viking.png" id="2_6a3ix"]
 [ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="3_ajhyj"]
 [ext_resource type="StyleBox" uid="uid://cj5mkruerex17" path="res://BackgroundDarkRounded.tres" id="4_3gbw1"]
@@ -23,9 +23,11 @@ imageBox = NodePath("Image")
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1901097591]
 position = Vector2(29, 25)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(9, 9)
 texture = ExtResource("2_6a3ix")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Heading" type="Label" parent="." unique_id=397933067]
 layout_mode = 0

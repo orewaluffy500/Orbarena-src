@@ -7,7 +7,7 @@ class_name PlayerNode
 @export var experience = 0
 @export var shields = ["Wooden"]
 @export var currentShield = "Wooden"
-@export var unlockedBalls = {"guy": {}}
+@export var unlockedBalls = {"arsonist": {}}
 @export var showedMessageFor = []
 @export var cooldowns = {}
 @export var abilities = {}

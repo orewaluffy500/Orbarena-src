@@ -9,9 +9,12 @@
 size = Vector2(12, 24)
 
 [node name="FireBullet" type="RigidBody2D" unique_id=388680592]
+can_sleep = false
 script = ExtResource("1_v80su")
+damage = [6, 12]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=235719143]
+modulate = Color(0.98797756, 0.7272856, 0, 1)
 z_index = 10
 scale = Vector2(10.940006, 13.253569)
 mesh = SubResource("CapsuleMesh_v80su")
