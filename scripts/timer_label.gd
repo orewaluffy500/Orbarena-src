@@ -6,6 +6,7 @@ extends Label
 @onready var BackgroundMusic: BGMusicPlayer = get_viewport().get_camera_2d().get_node("BackgroundMusic")
 
 func _process(delta: float) -> void:
+	
 	if Screens.currentScreen != "arena":
 		visible = false
 		return
@@ -95,8 +96,8 @@ func check_end() -> void:
 			var exp = randi_range(Player.data.maxExp - 60, Player.data.maxExp + 60)
 
 			if Misc.gamemode != "2v2":
-				Player.data.coins += coinOutput
-				Player.data.elixir += randi_range(120, 500) + (Player.data.level * 10)
+				Player.data.coins += coinOutput if not Misc.gamemode == "Brawl_easy" else (coinOutput / 2) + randi_range(10, 20)
+				Player.data.elixir += randi_range(120, 500) + (Player.data.level * 10) if not Misc.gamemode == "Brawl_easy" else randi_range(200, 350)
 			else:
 				Player.data.coins += randi_range(400, 900)
 				Player.data.elixir += randi_range(400, 1000)

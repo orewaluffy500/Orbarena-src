@@ -3,4 +3,3 @@
 [resource]
 bg_color = Color(0.083072685, 0.083072685, 0.083072685, 1)
 border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 0)
-corner_detail = 1

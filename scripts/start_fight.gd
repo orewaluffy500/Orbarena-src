@@ -14,6 +14,7 @@ extends Button
 
 @onready var require = {
 	"Brawl": 0,
+	"Brawl_easy": 0,
 	"Endless": 5,
 	"2v2": 10,
 	"boss": 0
@@ -21,7 +22,7 @@ extends Button
 @onready var originalText = text
 
 func _pressed() -> void:
-	if mode == "Brawl": startFight()
+	if mode.begins_with("Brawl"): startFight()
 	
 	elif mode == "Endless":
 		if Player.data.level < require[mode]:
@@ -58,7 +59,7 @@ func createBall(name, team, form):
 
 	return ball
 
-func startFight():
+func startFight(easy_mode = false):
 	arena.toggle_big_mode(false)
 	fightInit()
 	Misc.gamemode = mode
@@ -127,6 +128,11 @@ func get_random_form(ball1: Ball):
 	
 	
 func _process(delta: float) -> void:
+	if mode.ends_with("_easy") and Player.data.level >= 6:
+		text = "Too high level"
+		disabled = true
+		return
+	
 	if Player.data.level < require[mode]:
 		disabled = true
 		text = "LOCKED (lv. %d)" % require[mode]

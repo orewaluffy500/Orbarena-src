@@ -112,12 +112,12 @@ func _ready() -> void:
 	# Configuration
 	BallConfig.configurate_ball(self)
 	
-	if player and not form == "guy":
-		damage /= 1.5
-	else:
+	if not player and not Misc.check_teams("RED", get_meta("team", null)):
 		if not form == "guy":
-			health += 15
-			maxHealth += 15
+			var change = 15 if not Misc.gamemode == "Brawl_easy" else -10
+
+			health += change
+			maxHealth += change
 	
 	# Check if ally
 	if not player:

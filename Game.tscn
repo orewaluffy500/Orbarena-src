@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://rmlsqxuo6aco" path="res://scripts/ball_info_label.gd" id="2_t88pq"]
 [ext_resource type="FontFile" uid="uid://u3vj5n3qh43m" path="res://assets/fonts/Bungee-Regular.ttf" id="3_pbwgg"]
 [ext_resource type="Script" uid="uid://cd5wjbjy84xe2" path="res://scripts/timer_label.gd" id="3_yhmtn"]
-[ext_resource type="FontFile" uid="uid://dm0qk33j5oxn5" path="res://assets/fonts/PixelifySans-SemiBold.ttf" id="4_ib0bs"]
 [ext_resource type="Script" uid="uid://hjsf8m5ufep7" path="res://scripts/arena.gd" id="5_0mevm"]
 [ext_resource type="Script" uid="uid://b0qmt2ik43cvj" path="res://scripts/map_type.gd" id="6_2t1a5"]
 [ext_resource type="Theme" uid="uid://c073ccqh1h2mu" path="res://Maintheme.tres" id="6_3mrqo"]
@@ -138,7 +137,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-corner_detail = 1
 expand_margin_right = 11.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qldve"]
@@ -238,7 +236,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0x5m"]
 font = ExtResource("2_r0x5m")
@@ -265,8 +262,24 @@ skew = Vector2(0.4, 0)
 bg_color = Color(0, 0.38803357, 0.21187708, 1)
 skew = Vector2(0.4, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsg7d"]
+bg_color = Color(0.08208982, 0.082089834, 0.082089774, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1464693, 0.14646935, 0.14646924, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m68t5"]
 bg_color = Color(0.7507619, 0, 0.10562328, 1)
+skew = Vector2(0.4, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib0bs"]
+bg_color = Color(0.24759343, 0.46143526, 2.8878452e-07, 1)
 skew = Vector2(0.4, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2b8v"]
@@ -342,11 +355,11 @@ centered = false
 
 [node name="Heading" type="Label" parent="." unique_id=2107184572]
 texture_filter = 2
-offset_left = 5.0
-offset_top = 6.0
-offset_right = 272.0
-offset_bottom = 68.0
-theme_override_fonts/font = ExtResource("4_ib0bs")
+offset_left = 12.0
+offset_top = -1.0
+offset_right = 279.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("50_3h3yf")
 theme_override_font_sizes/font_size = 40
 text = "ARENA ORBS"
 label_settings = SubResource("LabelSettings_t88pq")
@@ -1265,7 +1278,7 @@ script = ExtResource("15_hmewc")
 [node name="LevelBar" type="ProgressBar" parent="." unique_id=1292799505]
 clip_contents = true
 offset_left = 288.0
-offset_top = 57.0
+offset_top = 54.0
 offset_right = 763.0
 offset_bottom = 74.0
 theme = ExtResource("6_3mrqo")
@@ -1278,10 +1291,10 @@ script = ExtResource("25_8ktx7")
 [node name="Info" type="Label" parent="LevelBar" unique_id=1862198812]
 z_index = 1
 layout_mode = 0
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 476.0
-offset_bottom = 19.0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 474.0
+offset_bottom = 21.0
 theme = ExtResource("6_3mrqo")
 theme_override_font_sizes/font_size = 16
 text = "0/0"
@@ -1776,16 +1789,19 @@ script = ExtResource("61_eycq6")
 
 [node name="ShieldSelector" type="OptionButton" parent="." unique_id=275795251]
 modulate = Color(1.224127, 1.224127, 1.224127, 1)
-offset_left = 183.0
-offset_top = 446.0
-offset_right = 373.0
-offset_bottom = 499.0
+offset_left = 263.0
+offset_top = 533.0
+offset_right = 528.0
+offset_bottom = 585.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsg7d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsg7d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nsg7d")
 script = ExtResource("39_hxy8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShieldSelector" unique_id=827321173]
 z_index = 1
-position = Vector2(362, -116.000015)
-scale = Vector2(4.5, 4.5)
+position = Vector2(-41, 23)
+scale = Vector2(2, 2)
 texture = ExtResource("61_jofrc")
 
 [node name="BattlePanel" type="Panel" parent="." unique_id=109148482]
@@ -1807,6 +1823,22 @@ theme_override_styles/hover = ExtResource("61_qbkdk")
 theme_override_styles/disabled = ExtResource("61_bnith")
 text = "BRAWL"
 script = ExtResource("9_2vekm")
+
+[node name="BeginnerBrawl" type="Button" parent="BattlePanel" unique_id=1204082]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 168.0
+offset_right = 400.0
+offset_bottom = 214.0
+theme = ExtResource("6_3mrqo")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ib0bs")
+theme_override_styles/pressed = ExtResource("61_qbkdk")
+theme_override_styles/hover = ExtResource("61_qbkdk")
+theme_override_styles/disabled = ExtResource("61_bnith")
+text = "Beginner Brawl"
+script = ExtResource("9_2vekm")
+mode = "Brawl_easy"
 
 [node name="EndlessMode" type="Button" parent="BattlePanel" unique_id=2095044435]
 layout_mode = 0
@@ -1848,10 +1880,10 @@ scale = Vector2(6, 6)
 texture = ExtResource("34_ndmee")
 
 [node name="Label" type="Label" parent="BattlePanel/FighterSelection" unique_id=23262961]
-offset_left = 184.0
-offset_top = 147.0
-offset_right = 603.0
-offset_bottom = 202.0
+offset_left = 186.0
+offset_top = 447.5
+offset_right = 605.0
+offset_bottom = 502.5
 theme = ExtResource("6_3mrqo")
 theme_override_font_sizes/font_size = 38
 text = "GUY"
@@ -1859,22 +1891,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Left" type="TextureButton" parent="BattlePanel/FighterSelection" unique_id=1740981325]
-offset_left = 166.0
-offset_top = 246.00002
-offset_right = 325.0
-offset_bottom = 417.0
-scale = Vector2(0.75, 0.75)
+offset_left = 114.0
+offset_top = 221.0
+offset_right = 273.0
+offset_bottom = 392.0
 texture_normal = ExtResource("31_nyc7o")
 texture_hover = ExtResource("32_ds8mp")
 stretch_mode = 0
 flip_h = true
 
 [node name="Right" type="TextureButton" parent="BattlePanel/FighterSelection" unique_id=842482757]
-offset_left = 509.0
-offset_top = 249.0
-offset_right = 668.0
-offset_bottom = 420.0
-scale = Vector2(0.75, 0.75)
+offset_left = 532.0
+offset_top = 226.0
+offset_right = 691.0
+offset_bottom = 397.0
 texture_normal = ExtResource("31_nyc7o")
 texture_hover = ExtResource("32_ds8mp")
 stretch_mode = 4

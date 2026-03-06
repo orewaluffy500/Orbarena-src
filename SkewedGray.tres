@@ -3,4 +3,3 @@
 [resource]
 bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
 skew = Vector2(0.4, 0)
-corner_detail = 1
